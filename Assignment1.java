@@ -1,6 +1,7 @@
 import java.util.*;
 
 
+
 public class Giocatore {
     String nome;
     int energia = 10;
@@ -65,17 +66,17 @@ public class Turno(Giocatore g) {
        }
        public void endPhase() {
        		turno.g++;
-		
-			
+
+
        }
 }
 
 public class Carta {
-	
+
 	String nome; //Nome carta
 	public void effettoCarta() {
-		
-	}	
+
+	}
 }
 
 public class Mostro extends Carta  {			// da fare get e set per attacco e difesa
@@ -88,9 +89,9 @@ public class Mostro extends Carta  {			// da fare get e set per attacco e difesa
 		this.difesa = difesa;
 	}
 	public void effettoCarta() {
-		
+
 	}
-	
+
 }
 
 public class Stregoneria extends Carta  {
@@ -99,9 +100,9 @@ public class Stregoneria extends Carta  {
 		this.nome = nome;
 	}
 	public void effettoCarta() {
-		
+
 	}
-	
+
 }
 
 public class Istantanea extends Carta  {
@@ -109,13 +110,13 @@ public class Istantanea extends Carta  {
 		this.nome = nome;
 	}
 	public void effettoCarta() {
-		
+
 	}
 }
 
 public class Effetti {
 	private void buffMonster() {
-		
+
 	// FARE METODO EQUALS E SELEZIONARE MOSTRO DAL CAMPO E PASSARLO COME PARAMETRO AL METODO BUFFMOSTRO
 	// eseguire metodo per aumentare attacco e difesa tramite get e set dell'oggetto mostro
 	}
@@ -172,7 +173,7 @@ public static void main {
     Giocatore giocatore2 = new Giocatore2(nome2, 10, mazzo2, mano2, campo2);
     Mostro mostro1 = new Mostro("Alberto", 5, 3);
     Stregoneria stregoneria1 = new Stregoneria("Potenziamento");
-	
+
 
 
 
