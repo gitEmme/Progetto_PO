@@ -12,6 +12,6 @@ import java.util.ArrayList;
  * @author Alberto
  */
 public class Field {
-    final int LUNGHEZZA_CAMPO = 30;
+
     ArrayList<Carta> campo = new ArrayList<>();
 }

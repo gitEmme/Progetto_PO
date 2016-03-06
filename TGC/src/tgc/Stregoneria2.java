@@ -31,7 +31,7 @@ public class Stregoneria2 extends Stregoneria  {
         }while(scelta < g.campoGiocatore.campo.size()); // MANCA IL CONFRONTO SE LA CARTA E MOSTRO)
         
         while( 1 < g.campoGicatore.campo.size) {   //Controlla se dentro all'arraylist vi è situato un mostro o una stregoneria
-            if (g.campoGiocatore.campo.istanceof(Mostro)) { //Se dentro alla cella c'è un mostro allora togli un punto danno
+            if (g.campoGiocatore.campo.istanceof(mostro)) { //Se dentro alla cella c'è un mostro allora togli un punto danno
                 g.mostro.attacco = g.mostro.attacco - 1;
                 System.out.print("Il mostro " + g.mostro.nome + " ha un unità in meno di danno!");
             }
