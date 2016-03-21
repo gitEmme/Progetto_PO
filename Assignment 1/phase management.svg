@@ -1,0 +1,141 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20001102//EN" "http://www.w3.org/TR/2000/CR-SVG-20001102/DTD/svg-20001102.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="774" x="0" y="0" height="398" id="/home/andrea/Google Drive/Code/java test/Card/Assignment 1/phase management" >
+ <rect width="774" x="0" y="169" height="398" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="230" y2="180" x1="54" x2="54" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="516" y2="303" x1="503" x2="489" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="190" y2="188" x1="618" x2="615" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="279" y2="263" x1="346" x2="445" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="273" y2="376" x1="61" x2="57" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="524" y2="308" x1="209" x2="306" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="188" y2="244" x1="615" x2="489" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="419" y2="398" x1="618" x2="618" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="180" y2="180" x1="54" x2="96" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="180" y2="230" x1="96" x2="96" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="362" y2="357" x1="618" x2="618" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="524" y2="469" x1="158" x2="115" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="180" y2="230" x1="96" x2="96" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="305" y2="273" x1="618" x2="534" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="383" y2="303" x1="443" x2="467" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="180" y2="180" x1="54" x2="96" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="273" y2="376" x1="89" x2="115" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="398" y2="303" x1="618" x2="511" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="230" y2="180" x1="54" x2="54" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="251" y2="279" x1="117" x2="293" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="376" y2="293" x1="172" x2="293" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="308" y2="383" x1="332" x2="397" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="308" y2="383" x1="319" x2="351" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="357" y2="288" x1="618" x2="534" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="293" y2="283" x1="346" x2="445" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="247" y2="258" x1="619" x2="534" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;stroke-dasharray:18,6;fill:none;" y1="516" y2="459" x1="448" x2="397" />
+ <polygon points="115 469 117 482 127 474 115 469" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="346 293 357 296 368 291 356 288" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="534 288 539 300 547 290 534 288" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="61 273 56 283 60 295 65 283" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="511 303 515 315 524 306 511 303" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="54 230 58 220 54 208 50 220" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,0,0);" />
+ <polygon points="534 273 542 283 547 271 534 273" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="397 459 400 472 409 463 397 459" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="117 251 126 257 139 254 128 248" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="534 258 546 263 544 250 534 258" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="332 308 335 318 346 325 342 313" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <polygon points="489 244 502 245 497 233 489 244" transform="translate(0,-169)" style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(255,255,255);" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="383" y2="375" x1="351" x2="341" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="472" y2="463" x1="400" x2="409" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="303" y2="315" x1="489" x2="483" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="220" y2="208" x1="58" x2="54" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="257" y2="254" x1="126" x2="139" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="308" y2="316" x1="306" x2="295" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="245" y2="233" x1="502" x2="497" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="376" y2="367" x1="115" x2="106" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="288" y2="290" x1="534" x2="547" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="230" y2="219" x1="96" x2="103" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="263" y2="258" x1="445" x2="433" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="230" y2="219" x1="96" x2="89" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="220" y2="230" x1="50" x2="54" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="251" y2="257" x1="117" x2="126" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="283" y2="295" x1="56" x2="60" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="230" y2="220" x1="54" x2="58" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="244" y2="245" x1="489" x2="502" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="293" y2="305" x1="293" x2="287" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="296" y2="291" x1="357" x2="368" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="293" y2="294" x1="293" x2="280" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="258" y2="250" x1="534" x2="544" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="303" y2="314" x1="489" x2="496" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="283" y2="273" x1="65" x2="61" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="291" y2="288" x1="368" x2="356" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="469" y2="474" x1="115" x2="127" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="273" y2="271" x1="534" x2="547" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="459" y2="472" x1="397" x2="400" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="308" y2="321" x1="306" x2="307" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="258" y2="263" x1="534" x2="546" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="273" y2="283" x1="61" x2="56" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="376" y2="363" x1="115" x2="119" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="313" y2="308" x1="342" x2="332" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="308" y2="318" x1="332" x2="335" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="315" y2="306" x1="515" x2="524" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="288" y2="300" x1="534" x2="539" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="318" y2="325" x1="335" x2="346" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="303" y2="316" x1="467" x2="470" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="303" y2="312" x1="467" x2="458" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="325" y2="313" x1="346" x2="342" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="283" y2="271" x1="542" x2="547" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="295" y2="283" x1="60" x2="65" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="383" y2="370" x1="351" x2="353" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="300" y2="290" x1="539" x2="547" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="248" y2="251" x1="128" x2="117" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="459" y2="463" x1="397" x2="409" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="273" y2="283" x1="534" x2="542" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="208" y2="220" x1="54" x2="50" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="288" y2="293" x1="356" x2="346" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="293" y2="296" x1="346" x2="357" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="469" y2="482" x1="115" x2="117" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="263" y2="250" x1="546" x2="544" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="482" y2="474" x1="117" x2="127" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="303" y2="315" x1="511" x2="515" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="263" y2="271" x1="445" x2="435" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="254" y2="248" x1="139" x2="128" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="303" y2="306" x1="511" x2="524" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:none;" y1="244" y2="233" x1="489" x2="497" />
+ <text x="67" y="224" transform="translate(0,-169)" style="fill:rgb(50,50,50);stroke-width:0;font-size:10;font-style:normal;font-weight:400;font-family:Sans Serif;" text-anchor="middle" >+instance</text>
+ <rect width="185" x="305" y="383" height="76" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="397" y="398" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >«interface»</text>
+ <text x="397" y="415" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:italic;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >PhaseManager</text>
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" y1="417" y2="417" x1="305" x2="489" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" y1="425" y2="425" x1="305" x2="489" />
+ <text x="310" y="440" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:400;font-family:Sans Serif;" >+ current_phase() : Phases</text>
+ <text x="310" y="457" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:400;font-family:Sans Serif;" >+ next_phase() : Phases</text>
+ <rect width="138" x="618" y="169" height="43" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="687" y="197" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >DefaultDrawPhase</text>
+ <rect width="89" x="445" y="244" height="59" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="489" y="259" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >«interface»</text>
+ <text x="489" y="276" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:italic;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >Phase</text>
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" y1="278" y2="278" x1="445" x2="533" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" y1="286" y2="286" x1="445" x2="533" />
+ <text x="450" y="301" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:400;font-family:Sans Serif;" >+ execute()</text>
+ <rect width="230" x="0" y="376" height="93" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="115" y="391" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >«interface»</text>
+ <text x="115" y="408" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:italic;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >TurnManager</text>
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" y1="410" y2="410" x1="0" x2="229" />
+ <line transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" y1="418" y2="418" x1="0" x2="229" />
+ <text x="5" y="433" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:400;font-family:Sans Serif;" >+ get_current_player() : Player</text>
+ <text x="5" y="450" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:400;font-family:Sans Serif;" >+ get_current_adversary() : Player</text>
+ <text x="5" y="467" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:400;font-family:Sans Serif;" >+ next_player() : Player</text>
+ <rect width="165" x="393" y="516" height="43" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="475" y="544" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >DefaultPhaseManager</text>
+ <rect width="83" x="34" y="230" height="43" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="75" y="258" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >CardGame</text>
+ <rect width="130" x="618" y="398" height="43" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="683" y="426" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >DefaultEndPhase</text>
+ <rect width="137" x="618" y="341" height="43" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="686" y="369" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >DefaultMainPhase</text>
+ <rect width="154" x="107" y="524" height="43" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="184" y="552" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >DefaultTurnManager</text>
+ <rect width="144" x="619" y="226" height="43" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="691" y="254" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >DefaultUntapPhase</text>
+ <rect width="156" x="618" y="284" height="43" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="696" y="312" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >DefaultCombatPhase</text>
+ <rect width="53" x="293" y="265" height="43" transform="translate(0,-169)" style="stroke:rgb(255,0,0);stroke-width:0.9;fill:rgb(255,255,192);" />
+ <text x="319" y="293" transform="translate(0,-169)" style="fill:rgb(0,0,0);stroke-width:0;font-size:10;font-style:normal;font-weight:700;font-family:Sans Serif;" text-anchor="middle" >Player</text>
+</svg>
