@@ -24,6 +24,7 @@ public class CardGame {
         ArrayList<Card> deck = new ArrayList<Card>();
         for (int i=0; i!=5; ++i) deck.add(new Homeopathy());
         for (int i=0; i!=5; ++i) deck.add(new Reflexologist());
+        for (int i=0; i!=5; ++i) deck.add(new Fatigue());
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
