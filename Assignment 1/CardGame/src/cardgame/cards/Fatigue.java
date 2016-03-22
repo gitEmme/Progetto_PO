@@ -18,6 +18,29 @@ import cardgame.Player;
  */
 public class Fatigue implements Card {
     
+    @Override
+    public String name() { 
+        return "Fatigue"; 
+    }
+    @Override
+    public String type() { 
+        return "Sorcery"; 
+    }
+    @Override
+    public String rule_text() { 
+        return "Target player skips his or her next draw step."; 
+    }
+    @Override
+    public String toString() { 
+        return name() + "[" + rule_text() +"]";
+    }
+    @Override
+    public boolean isInstant() {  // Non è istantanea!
+        return false; 
+    }
+    
+    
+    
     public class FatigueEffect extends AbstractCardEffect {
         
         public FatigueEffect(Player p, Card c) {
@@ -29,27 +52,5 @@ public class Fatigue implements Card {
     public Effect get_effect(Player owner) {
         return FatigueEffect(owner, this);
     }
-    
-    
-    
-    
-    
-    public String name() { 
-        return "Fatigue"; 
-    }
-    public String type() { 
-        return "Sorcery"; 
-    }
-    public String rule_text() { 
-        return "Target player skips his or her next draw step."; 
-    }
-    public String toString() { 
-        return name() + "[" + rule_text() +"]";
-    }
-    public boolean isInstant() {  // Non è istantanea!
-        return false; 
-    }
-
-    
     
 }

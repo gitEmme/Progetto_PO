@@ -3,6 +3,7 @@
  * Questa creatura non può attaccare!
  * 
  */
+
 package cardgame.cards;
 
 import cardgame.AbstractCreature;
