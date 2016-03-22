@@ -21,6 +21,28 @@ import java.util.List;
  */
 
 public class BenevolentAncestor implements Card {
+    
+    
+    @Override
+    public String name() { 
+        return "Benevolent Ancestor"; 
+    }
+    @Override
+    public String type() { 
+        return "Creature"; 
+    }
+    @Override
+    public String rule_text() { 
+        return "This card can't attack!"; 
+    }
+    @Override
+    public String toString() { 
+        return name() + "[" + rule_text() +"]";
+    }
+    @Override
+    public boolean isInstant() { // E' una creatura!
+        return false; 
+    }
 
     
     
@@ -76,23 +98,6 @@ public class BenevolentAncestor implements Card {
         public List<Effect> avaliable_effects() { 
             return (is_tapped)?tap_effects:all_effects; 
         }
-    }
-    
-    
-    public String name() { 
-        return "Benevolent Ancestor"; 
-    }
-    public String type() { 
-        return "Creature"; 
-    }
-    public String rule_text() { 
-        return "This card can't attack!"; 
-    }
-    public String toString() { 
-        return name() + "[" + rule_text() +"]";
-    }
-    public boolean isInstant() { // E' una creatura!
-        return false; 
     }
     
 }

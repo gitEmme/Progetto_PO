@@ -1,5 +1,7 @@
 package cardgame;
 
+import cardgame.cards.BenevolentAncestor;
+import cardgame.cards.Fatigue;
 import cardgame.cards.Homeopathy;
 import cardgame.cards.Reflexologist;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new Homeopathy());
         for (int i=0; i!=5; ++i) deck.add(new Reflexologist());
         for (int i=0; i!=5; ++i) deck.add(new Fatigue());
+        for (int i=0; i!=5; ++i) deck.add(new BenevolentAncestor());
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
