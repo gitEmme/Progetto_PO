@@ -1,3 +1,8 @@
+IMPORTANTE IL CODICE SORGENTE E'IN: Assignment1/CardGame/src/cardgame
+=======================================================================
+
+
+
 # Progetto_PO
 Progetto PO realizzazione gioco carte magic
 
@@ -7,12 +12,6 @@ Docente: Andrea Torsello
 
 Assignment 1
 
-Gruppo 15:
--	Alberto Galvan
--	Francesco Benetello
--	Rachele Marin
--	Jacopo Favaro
--	Alessandro Zanolla
 
 Per la realizzazione del progetto del corso di Programmazione a Oggetti, il quale prevede la creazione di un gioco di carte simile a Magic, il nostro gruppo ha definito la seguente serie di oggetti(classi):
 
@@ -36,7 +35,7 @@ Per la realizzazione del progetto del corso di Programmazione a Oggetti, il qual
 
 •	Carta: Questo oggetto definirà le 3 tipologie di carta presenti nel gioco:
     1.	Creatura: Una creatura giocata e posizionata sul campo potrà assumere due posizioni, quella di attacco o quella di difesa. Quando una creatura viene giocata nella “Main Phase” non potrà eseguire nessun altra azione per questo turno in quanto “tappata”, ma, nel turno successivo durante la “Untap Phase” questa potrà eseguire un’azione come attaccare o spostarsi in difesa.
-    
+
     2.	Stregoneria: Queste carte possono avere molteplici effetti, una carta stregoneria può infatti per esempio fare danno all’Avversario e/o alle sue creature e in alcuni casi possono anche arrivare a cambiare le regole del gioco.
 
     3.	Istantanea: Hanno un effetto istantaneo, può quindi venire giocata in qualsiasi momento anche se non è il proprio turno.
