@@ -1,7 +1,17 @@
 package cardgame;
 
-import cardgame.cards.Homeopathy;
+// Carte:
+//  Mostri:
 import cardgame.cards.Reflexologist;
+import cardgame.cards.BenevolentAncestor;
+
+// Stregonerie:
+import cardgame.cards.Fatigue;
+
+// Istantanee:
+import cardgame.cards.Homeopathy;
+
+//Librerie per il funzionamento
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.ArrayDeque;
@@ -24,6 +34,9 @@ public class CardGame {
         ArrayList<Card> deck = new ArrayList<Card>();
         for (int i=0; i!=5; ++i) deck.add(new Homeopathy());
         for (int i=0; i!=5; ++i) deck.add(new Reflexologist());
+        for (int i=0; i!=5; ++i) deck.add(new BenevolentAncestor());
+        //for (int i=0; i!=5; ++i) deck.add(new Fatigue()); Eccezione, da sistemare!
+        
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
