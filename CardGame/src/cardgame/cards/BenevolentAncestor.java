@@ -1,7 +1,7 @@
 /*
  * Creature/Creatura Attacco: 0, Difesa: 4
  * Questa creatura non può attaccare!
- * 
+ * Prevent the next one damage that would be dealt to target creature or player this turn
  */
 
 package cardgame.cards;
@@ -35,7 +35,7 @@ public class BenevolentAncestor implements Card {
     }
     @Override
     public String rule_text() { 
-        return "This card can't attack!"; 
+        return "This card can't attack!\n Prevent the next one damage that would be dealt to target creature or player this turn."; 
     }
     @Override
     public String toString() { 
@@ -58,7 +58,8 @@ public class BenevolentAncestor implements Card {
     }
     
     public Effect get_effect(Player p) { 
-        return new BenevolentAncestorEffect(p,this); 
+        return new BenevolentAncestorEffect(p,this);
+
     }
     
     
@@ -78,7 +79,7 @@ public class BenevolentAncestor implements Card {
                                     }
                                     
                                     public String toString() { 
-                                        return "tap: Benevolent Ancestor fa qualcosa, ma non so cosa"; 
+                                        return "tap: Benevolent Ancestor fa qualcosa, ma non so cosa! Con questo messaggio sto tappando!"; 
                                     }
                                 }
                 ); 
