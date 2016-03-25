@@ -39,20 +39,20 @@ public class Fatigue implements Card {
     public boolean isInstant() {  // Non è istantanea!
         return false; 
     }
-
-    @Override
-    public Effect get_effect(Player owner) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    
+    private class FatigueEffect extends AbstractCardEffect {
+        
+        public FatigueEffect(Player p, Card c) { 
+            super(p,c); 
+        }
+        public void resolve() {
+            System.out.println("Sono Fatigue e faccio la qualcosa!");
+        }
     }
     
-    
-    
-    public class FatigueEffect extends AbstractCardEffect {
-        
-        public FatigueEffect(Player p, Card c) {
-            super(p,c);
-        }
-        public void resolve() {}
+    public Effect get_effect(Player owner) { 
+        return new Fatigue.FatigueEffect(owner, this); 
     }
     
 }
