@@ -35,7 +35,7 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new Homeopathy());
         for (int i=0; i!=5; ++i) deck.add(new Reflexologist());
         for (int i=0; i!=5; ++i) deck.add(new BenevolentAncestor());
-        //for (int i=0; i!=5; ++i) deck.add(new Fatigue()); Eccezione, da sistemare!
+        for (int i=0; i!=5; ++i) deck.add(new Fatigue()); 
         
         
         instance.get_player(0).set_deck(deck.iterator());
@@ -63,8 +63,8 @@ public class CardGame {
     
     //execute game
     public void run() {
-        Players[0].get_deck().shuffle();
-        Players[1].get_deck().shuffle();
+        Players[0].get_deck().shuffle();  //Mescola mazzo PLayer 1
+        Players[1].get_deck().shuffle();  //Mescola mazzo PLayer 2
                 
         for (int i=0; i!=5; ++i) Players[0].draw();
         for (int i=0; i!=5; ++i) Players[1].draw();
