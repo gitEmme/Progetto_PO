@@ -1,7 +1,7 @@
 /*
  * Creature/Creatura Attacco: 0, Difesa: 4
  * Questa creatura non può attaccare!
- * Prevent the next one damage that would be dealt to target creature or player this turn
+ * Previeni il prossimo punto danno che verrebbe inflitto a una creatura o a un giocatore bersaglio in questo turno.
  */
 
 package cardgame.cards;
