@@ -5,15 +5,18 @@ package cardgame;
 import cardgame.cards.Reflexologist;
 import cardgame.cards.BenevolentAncestor;
 import cardgame.cards.Bronze_Sable;
+import cardgame.cards.NorwoodRanger;
 
 // Stregonerie:
 import cardgame.cards.Fatigue;
 import cardgame.cards.WorldAtWar;
 import cardgame.cards.Boiling_Earth;
+import cardgame.cards.SavorTheMoment;
 
 // Istantanee:
 import cardgame.cards.Homeopathy;
 import cardgame.cards.Darkness;
+import cardgame.cards.AggressiveUrge;
 
 //Librerie per il funzionamento
 import java.util.ArrayList;
@@ -44,7 +47,9 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new WorldAtWar());
         for (int i=0; i!=5; ++i) deck.add(new Boiling_Earth());
         for (int i=0; i!=5; ++i) deck.add(new Bronze_Sable());
-        
+        for (int i=0; i!=5; ++i) deck.add(new AggressiveUrge());
+        for (int i=0; i!=5; ++i) deck.add(new NorwoodRanger());
+        for (int i=0; i!=5; ++i) deck.add(new SavorTheMoment());
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
