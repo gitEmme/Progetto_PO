@@ -4,10 +4,12 @@ package cardgame;
 //  Mostri:
 import cardgame.cards.Reflexologist;
 import cardgame.cards.BenevolentAncestor;
+import cardgame.cards.Bronze_Sable;
 
 // Stregonerie:
 import cardgame.cards.Fatigue;
 import cardgame.cards.WorldAtWar;
+import cardgame.cards.Boiling_Earth;
 
 // Istantanee:
 import cardgame.cards.Homeopathy;
@@ -40,6 +42,8 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new Fatigue());
         for (int i=0; i!=5; ++i) deck.add(new Darkness());
         for (int i=0; i!=5; ++i) deck.add(new WorldAtWar());
+        for (int i=0; i!=5; ++i) deck.add(new Boiling_Earth());
+        for (int i=0; i!=5; ++i) deck.add(new Bronze_Sable());
         
         
         instance.get_player(0).set_deck(deck.iterator());
