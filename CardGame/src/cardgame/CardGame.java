@@ -18,6 +18,7 @@ import cardgame.cards.VolcanicHammer;
 import cardgame.cards.Homeopathy;
 import cardgame.cards.Darkness;
 import cardgame.cards.AggressiveUrge;
+import cardgame.cards.Deflection;
 
 //Librerie per il funzionamento
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new NorwoodRanger());
         for (int i=0; i!=5; ++i) deck.add(new SavorTheMoment());
         for (int i=0; i!=5; ++i) deck.add(new VolcanicHammer());
+        for (int i=0; i!=5; ++i) deck.add(new Deflection());
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
