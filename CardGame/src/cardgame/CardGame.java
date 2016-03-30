@@ -7,6 +7,7 @@ import cardgame.cards.BenevolentAncestor;
 
 // Stregonerie:
 import cardgame.cards.Fatigue;
+import cardgame.cards.WorldAtWar;
 
 // Istantanee:
 import cardgame.cards.Homeopathy;
@@ -38,6 +39,7 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new BenevolentAncestor());
         for (int i=0; i!=5; ++i) deck.add(new Fatigue());
         for (int i=0; i!=5; ++i) deck.add(new Darkness());
+        for (int i=0; i!=5; ++i) deck.add(new WorldAtWar());
         
         
         instance.get_player(0).set_deck(deck.iterator());
