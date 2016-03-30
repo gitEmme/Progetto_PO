@@ -12,6 +12,7 @@ import cardgame.cards.Fatigue;
 import cardgame.cards.WorldAtWar;
 import cardgame.cards.Boiling_Earth;
 import cardgame.cards.SavorTheMoment;
+import cardgame.cards.VolcanicHammer;
 
 // Istantanee:
 import cardgame.cards.Homeopathy;
@@ -50,6 +51,7 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new AggressiveUrge());
         for (int i=0; i!=5; ++i) deck.add(new NorwoodRanger());
         for (int i=0; i!=5; ++i) deck.add(new SavorTheMoment());
+        for (int i=0; i!=5; ++i) deck.add(new VolcanicHammer());
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
