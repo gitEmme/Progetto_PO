@@ -19,6 +19,7 @@ import cardgame.cards.Homeopathy;
 import cardgame.cards.Darkness;
 import cardgame.cards.AggressiveUrge;
 import cardgame.cards.Deflection;
+import cardgame.cards.Cancel;
 
 //Librerie per il funzionamento
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new SavorTheMoment());
         for (int i=0; i!=5; ++i) deck.add(new VolcanicHammer());
         for (int i=0; i!=5; ++i) deck.add(new Deflection());
+        for (int i=0; i!=5; ++i) deck.add(new Cancel());
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
