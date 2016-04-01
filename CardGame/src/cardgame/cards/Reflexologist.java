@@ -40,7 +40,7 @@ public class Reflexologist implements Card{
         
         public String name() { return "Reflexologist"; }
         
-        public void attack() {}
+        public void attack() {super.attack();}
         public void defend(Creature c) {}
         public int get_power() { return 0; }
         public int get_toughness() { return 1; }
