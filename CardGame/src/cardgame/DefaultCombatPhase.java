@@ -9,21 +9,19 @@ public class DefaultCombatPhase implements Phase {
     
     public void execute() {
         Player current_player = CardGame.instance.get_current_player();
+        int response_player_idx = (CardGame.instance.get_player(0) == current_player)?1:0;
         
         System.out.println(current_player.get_name() + ": combat phase");
         
         CardGame.instance.get_triggers().trigger(Phases.COMBAT_FILTER);
         // TODO combat
+        attack_phase(current_player, response_player_idx);
     }
     
-    public void giocaIstanaea(Player current_player, int response_player_idx){
+    public void giocaIstanaeaCombatPhase(Player current_player, int response_player_idx){
         int number_passes=0;
-        
-        if (!play_available_effect(current_player, true))
-            ++number_passes;
-        
         while (number_passes<2) {
-            if (play_available_effect(CardGame.instance.get_player(response_player_idx),false))
+            if (play_available_effect_CombatPhase(CardGame.instance.get_player(response_player_idx)))
                 number_passes=0;
             else ++number_passes;
             
@@ -36,7 +34,7 @@ public class DefaultCombatPhase implements Phase {
     // looks for all playable effects from cards in hand and creatures in play
     // and asks player for which one to play
     // includes creatures and sorceries only if is_main is true
-    private boolean play_available_effect(Player active_player, boolean is_main) {
+    private boolean play_available_effect_CombatPhase(Player active_player) {
         //collect and display available effects...
         ArrayList<Effect> available_effects = new ArrayList<>();
         Scanner reader = CardGame.instance.get_scanner();
@@ -45,7 +43,7 @@ public class DefaultCombatPhase implements Phase {
         System.out.println(active_player.get_name() + " select card/effect to play, 0 to pass");
         int i=0;
         for( Card c:active_player.get_hand() ) {
-            if ( is_main || c.isInstant() ) {
+            if (c.isInstant() ) {
                 available_effects.add( c.get_effect(active_player) );
                 System.out.println(Integer.toString(i+1)+") " + c );
                 ++i;
@@ -70,4 +68,33 @@ public class DefaultCombatPhase implements Phase {
         return true;
     }
     
+    private boolean attack_phase(Player active_player, int response_player_idx) {
+        //collect and display available monster in the field
+        if (active_player.get_creatures().isEmpty()){
+            System.out.println("no creatures on the field, " + active_player.get_name() + " can't attack or defend");
+            return false;
+        }
+        else{
+            Scanner reader = CardGame.instance.get_scanner();
+            
+            System.out.println(active_player.get_name() + " select a monster for attack or defend, 0 to pass");
+            
+            int i=0;
+            //print monster in the field
+            for ( Creature c:active_player.get_creatures()) {
+                System.out.println(Integer.toString(i+1)+") " + c.name() +
+                        " ["+ c.get_power() + "/" + c.get_toughness() + "]" );
+                ++i;
+            }
+            
+            //user choice monster for attack
+            int idx= reader.nextInt()-1;
+            if (idx<0 || idx>=active_player.get_creatures().size()) return false;
+            
+            System.out.println("il mostro " + active_player.get_creatures().get(idx).name() + " ha dichiarato un'azione di attacco al mostro ???");
+            giocaIstanaeaCombatPhase(active_player, response_player_idx);
+            active_player.get_creatures().get(idx).attack();
+            return true;
+        }
+    }  
 }
