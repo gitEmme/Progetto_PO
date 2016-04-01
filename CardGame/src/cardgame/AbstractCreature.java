@@ -32,7 +32,9 @@ public abstract class AbstractCreature implements Creature {
         }
         
         public boolean isTapped() { return is_tapped; }
-        public void attack() {} // to do in assignment 2
+        public void attack() {
+            System.out.println("ALLAH AKBAR! BOOM!");
+        } // to do in assignment 2
         public void defend(Creature c) {} // to do in assignment 2
         public void inflict_damage(int dmg) { 
             damage_left -= dmg; 
