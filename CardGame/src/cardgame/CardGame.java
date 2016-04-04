@@ -2,6 +2,7 @@ package cardgame;
 
 // Carte:
 //  Mostri:
+
 import cardgame.cards.Reflexologist;
 import cardgame.cards.BenevolentAncestor;
 import cardgame.cards.Bronze_Sable;
@@ -20,7 +21,7 @@ import cardgame.cards.Darkness;
 import cardgame.cards.AggressiveUrge;
 import cardgame.cards.Deflection;
 import cardgame.cards.Cancel;
-
+ 
 //Librerie per il funzionamento
 import java.util.ArrayList;
 import java.util.Deque;
@@ -98,15 +99,15 @@ public class CardGame {
     
     
     // Player and turn management
-    private final Player[] Players = new Player[2];
-    private final Deque<TurnManager>  turn_manager_stack = new ArrayDeque<TurnManager>();
+    private final Player[] Players = new Player[2]; //*
+    private final Deque<TurnManager>  turn_manager_stack = new ArrayDeque<TurnManager>(); //*
     public void set_turn_manager(TurnManager m) { turn_manager_stack.push(m); }
     public void remove_turn_manager(TurnManager m) { turn_manager_stack.remove(m); }
     
-    Player get_player(int i) { return Players[i]; }    
-    Player get_current_player() { return turn_manager_stack.peek().get_current_player(); }
-    Player get_current_adversary() { return turn_manager_stack.peek().get_current_adversary(); }
-    Player next_player() { return turn_manager_stack.peek().next_player(); }
+    public Player get_player(int i) { return Players[i]; }    
+    public Player get_current_player() { return turn_manager_stack.peek().get_current_player(); }
+    public Player get_current_adversary() { return turn_manager_stack.peek().get_current_adversary(); }
+    public Player next_player() { return turn_manager_stack.peek().next_player(); }
     
     
     // Stack access
