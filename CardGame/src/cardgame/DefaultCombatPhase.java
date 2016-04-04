@@ -1,11 +1,39 @@
 package cardgame;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 
 
 public class DefaultCombatPhase implements Phase {
+    private final ArrayList<Creature> attaccanti = new ArrayList<>();
+    private final ArrayList<Creature> difensori = new ArrayList<>();
+    
+    public List<Creature> get_Atk_creatures() {
+        return attaccanti;
+    }
+    
+    public void add_attaccante(Creature e) {
+        attaccanti.add(e);
+    }
+    
+    public void remove_Atk(Creature e) {
+        attaccanti.remove(e);
+    }
+    
+    public List<Creature> get_Def_creatures() {
+        return difensori;
+    }
+    
+    public void add_difensore(Creature e) { 
+        difensori.add(e); 
+    }
+    
+    public void remove_Def(Creature e) {
+        difensori.remove(e);
+    }
     
     public void execute() {
         Player current_player = CardGame.instance.get_current_player();
@@ -15,7 +43,10 @@ public class DefaultCombatPhase implements Phase {
         
         CardGame.instance.get_triggers().trigger(Phases.COMBAT_FILTER);
         // TODO combat
-        attack_phase(current_player, response_player_idx);
+        
+        
+        
+        combat_phase(current_player, response_player_idx);
     }
     
     public void giocaIstanaeaCombatPhase(Player current_player, int response_player_idx){
@@ -68,7 +99,9 @@ public class DefaultCombatPhase implements Phase {
         return true;
     }
     
-    private boolean attack_phase(Player active_player, int response_player_idx) {
+    private boolean combat_phase(Player active_player, int response_player_idx) {
+        
+        
         //collect and display available monster in the field
         if (active_player.get_creatures().isEmpty()){
             System.out.println("no creatures on the field, " + active_player.get_name() + " can't attack or defend");
@@ -76,24 +109,32 @@ public class DefaultCombatPhase implements Phase {
         }
         else{
             Scanner reader = CardGame.instance.get_scanner();
+            boolean pass = false;
             
-            System.out.println(active_player.get_name() + " select a monster for attack or defend, 0 to pass");
-            
-            int i=0;
-            //print monster in the field
-            for ( Creature c:active_player.get_creatures()) {
-                System.out.println(Integer.toString(i+1)+") " + c.name() +
-                        " ["+ c.get_power() + "/" + c.get_toughness() + "]" );
-                ++i;
+            while(!pass){
+                System.out.println(active_player.get_name() + " select a monster for attack, 0 to pass");
+                
+                int i=0;
+                //print monster in the field
+                for ( Creature c:active_player.get_creatures()) {
+                    if(!c.isTapped())
+                        System.out.println(Integer.toString(i+1)+") " + c.name() +
+                                " ["+ c.get_power() + "/" + c.get_toughness() + "]" );
+                    ++i;
+                }
+                
+                //user choice monster for attack
+                int idx= reader.nextInt()-1;
+                if (idx<0 || idx>=active_player.get_creatures().size()) return false;
+                
+                System.out.println("il mostro " + active_player.get_creatures().get(idx).name() + " ha dichiarato un'azione di attacco");
+                active_player.get_creatures().get(idx).tap();
+                attaccanti.add(active_player.get_creatures().get(idx));
             }
             
-            //user choice monster for attack
-            int idx= reader.nextInt()-1;
-            if (idx<0 || idx>=active_player.get_creatures().size()) return false;
             
-            System.out.println("il mostro " + active_player.get_creatures().get(idx).name() + " ha dichiarato un'azione di attacco al mostro ???");
-            giocaIstanaeaCombatPhase(active_player, response_player_idx);
-            active_player.get_creatures().get(idx).attack();
+            //giocaIstanaeaCombatPhase(active_player, response_player_idx);
+            //active_player.get_creatures().get(idx).attack();
             return true;
         }
     }  
