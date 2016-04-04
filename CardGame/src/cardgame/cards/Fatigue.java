@@ -4,13 +4,17 @@
  * 
  * 
  */
+
 package cardgame.cards;
+
 
 import cardgame.Card;
 import cardgame.AbstractCardEffect;
-import cardgame.Effect;
 import cardgame.Player;
 import cardgame.CardGame;
+import cardgame.Effect;
+import cardgame.Phases;
+import cardgame.SkipPhase;
 
 /**
  *
@@ -42,17 +46,22 @@ public class Fatigue implements Card {
     
     
     private class FatigueEffect extends AbstractCardEffect {
-        
         public FatigueEffect(Player p, Card c) { 
             super(p,c); 
         }
+       
+        
         public void resolve() {
-            System.out.println("Sono Fatigue e faccio la qualcosa!");
-        }
+            //L'avversario salta la draw phase
+            CardGame.instance.get_current_adversary().set_phase(Phases.DRAW,new SkipPhase(Phases.DRAW));
+            
+        }  
     }
+    
     
     public Effect get_effect(Player owner) { 
         return new Fatigue.FatigueEffect(owner, this); 
     }
     
+
 }
