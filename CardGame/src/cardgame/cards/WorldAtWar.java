@@ -47,11 +47,10 @@ public class WorldAtWar implements Card {
     private class WorldAtWarEffect extends AbstractCardEffect {
         
         public WorldAtWarEffect(Player p, Card c) {
-        super(p, c);
+            super(p, c);
         }
         
         public void resolve() {
-            System.out.println("Sono WorldAtWar e faccio la qualcosa!");
         }
     
     }

@@ -28,18 +28,29 @@ collaborators:
 public class Player {
     // basic properties: name, library, deck, and life
     private String name;
-    public String get_name() {return name;}
-    public void set_name(String n) {name=n;}
+    public String get_name() {
+        return name;
+    }
+    public void set_name(String n) {
+        name=n;
+    }
 
     private final Library library = new Library(this);
 
-    public void set_deck(Iterator<Card> deck) { library.add(deck); }
-    public Library get_deck() { return library; }
+    public void set_deck(Iterator<Card> deck) { // Aggiunge deck al giocatore
+        library.add(deck); 
+    }
+    
+    public Library get_deck() {  // Ritorna il deck
+        return library; 
+    }
     
     
     
-    private int life=10;
-    public int get_life() {return life;}
+    private int life=10; // Vita
+    public int get_life() {
+        return life;
+    }
     
     // need to attach strategy/decorator
     public void inflict_damage(int pts) {
@@ -47,7 +58,9 @@ public class Player {
         if (life <=0) lose("received fatal damage");
     }
     
-    public void heal(int pts) { life += pts; }
+    public void heal(int pts) { 
+        life += pts; 
+    }
             
             
     // player looses. might need strategy/decorator
@@ -57,7 +70,7 @@ public class Player {
     
     
     
-    
+    //Costruttore
     public Player() {
         
         phase_manager_stack.push(new DefaultPhaseManager(phases));
@@ -78,7 +91,7 @@ public class Player {
         set_phase(Phases.END, new DefaultEndPhase());
         
         phases.put(Phases.NULL, new ArrayDeque<Phase>());
-    }
+    } //fine costruttore
 
     
     void execute_turn() {
@@ -108,8 +121,12 @@ public class Player {
     private Deque<PhaseManager> phase_manager_stack = new ArrayDeque<PhaseManager>();
     public void set_phase_manager(PhaseManager m) { phase_manager_stack.push(m); }
     public void remove_phase_manager(PhaseManager m) { phase_manager_stack.remove(m); }
-    Phases current_phase_id() { return phase_manager_stack.peek().current_phase(); }
-    Phase next_phase() { return get_phase(phase_manager_stack.peek().next_phase()); }
+    Phases current_phase_id() { 
+        return phase_manager_stack.peek().current_phase(); 
+    }
+    Phase next_phase() { 
+        return get_phase(phase_manager_stack.peek().next_phase()); 
+    }
     
     
 
@@ -148,5 +165,9 @@ public class Player {
     
     // destroy a creature in play
     public void destroy(Creature c) {creatures.remove(c);} 
+
+    public String get_name(String player_1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

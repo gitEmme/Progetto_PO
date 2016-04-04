@@ -75,7 +75,7 @@ public class BenevolentAncestor implements Card {
                                         return tap(); 
                                     }
                                     public void resolve() {
-                                        System.out.println("Faccio qualcosa!");
+                                        //risolvo effetto
                                     }
                                     
                                     public String toString() { 
