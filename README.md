@@ -15,6 +15,16 @@ Norwood Ranger
 
 Stregonerie da fare:
 Boiling Earth
+Savor the moment
+Volcanic Hammer
+World at war
+
+Istantanee da fare:
+
+Cancel
+Darkness
+Deflection
+
 
 
 
