@@ -50,13 +50,13 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new Darkness());
         for (int i=0; i!=5; ++i) deck.add(new WorldAtWar());
         for (int i=0; i!=5; ++i) deck.add(new Boiling_Earth());
-        for (int i=0; i!=5; ++i) deck.add(new Bronze_Sable());
+        for (int i=0; i!=5; ++i) deck.add(new Bronze_Sable()); 
         for (int i=0; i!=5; ++i) deck.add(new AggressiveUrge());
         for (int i=0; i!=5; ++i) deck.add(new NorwoodRanger());
         for (int i=0; i!=5; ++i) deck.add(new SavorTheMoment());
         for (int i=0; i!=5; ++i) deck.add(new VolcanicHammer());
         for (int i=0; i!=5; ++i) deck.add(new Deflection());
-        for (int i=0; i!=5; ++i) deck.add(new Cancel());
+        for (int i=0; i!=5; ++i) deck.add(new Cancel()); 
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
@@ -122,5 +122,5 @@ public class CardGame {
     
     //IO resources  to be dropped in final version
     Scanner reader = new Scanner(System.in);
-    Scanner get_scanner() { return reader; }
+    public Scanner get_scanner() { return reader; }
 }
