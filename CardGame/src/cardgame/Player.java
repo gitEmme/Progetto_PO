@@ -121,10 +121,10 @@ public class Player {
     private Deque<PhaseManager> phase_manager_stack = new ArrayDeque<PhaseManager>();
     public void set_phase_manager(PhaseManager m) { phase_manager_stack.push(m); }
     public void remove_phase_manager(PhaseManager m) { phase_manager_stack.remove(m); }
-    Phases current_phase_id() { 
+    public Phases current_phase_id() { 
         return phase_manager_stack.peek().current_phase(); 
     }
-    Phase next_phase() { 
+    public Phase next_phase() { 
         return get_phase(phase_manager_stack.peek().next_phase()); 
     }
     
