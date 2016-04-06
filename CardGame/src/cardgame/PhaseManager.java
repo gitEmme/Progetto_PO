@@ -2,7 +2,7 @@ package cardgame;
 
 
 public interface PhaseManager {
-    Phases current_phase();
-    Phases next_phase();  
+    public Phases current_phase();
+    public Phases next_phase();  
     
 }
