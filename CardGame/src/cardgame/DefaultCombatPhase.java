@@ -196,14 +196,14 @@ public class DefaultCombatPhase implements Phase {
                         ++i;
                     }
                     
-                    //user choice monster for attack
+                    //user choice monster for defend
                     int idx= reader.nextInt()-1;
                     if (idx<0 || idx>=current_adversary.get_creatures().size()) return false;
                     
                     if(CardGame.instance.get_current_adversary().get_creatures().get(idx).isTapped())
-                        System.out.println("il mostro " + current_adversary.get_creatures().get(idx).name() + " ha già dichiarato la sua azione di attacco");
+                        System.out.println("il mostro " + current_adversary.get_creatures().get(idx).name() + " ha già dichiarato la sua azione di difesa");
                     else{
-                        System.out.println("il mostro " + current_adversary.get_creatures().get(idx).name() + " ha dichiarato un'azione di attacco");
+                        System.out.println("il mostro " + current_adversary.get_creatures().get(idx).name() + " ha dichiarato un'azione di difesa");
                         current_adversary.get_creatures().get(idx).tap();
                         attaccanti.add(current_adversary.get_creatures().get(idx));
                     }
