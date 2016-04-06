@@ -28,6 +28,10 @@ import java.util.Deque;
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
+import cardgame.cards.Afflict;
+import cardgame.cards.DayOfJudgment;
+import cardgame.cards.FalsePeace;
+
 /*
 Signleton class maintaining global game properties.
 Handles: 
@@ -50,13 +54,16 @@ public class CardGame {
         for (int i=0; i!=5; ++i) deck.add(new Darkness());
         for (int i=0; i!=5; ++i) deck.add(new WorldAtWar());
         for (int i=0; i!=5; ++i) deck.add(new Boiling_Earth());
-        for (int i=0; i!=5; ++i) deck.add(new Bronze_Sable()); 
+        for (int i=0; i!=5; ++i) deck.add(new Bronze_Sable());
         for (int i=0; i!=5; ++i) deck.add(new AggressiveUrge());
         for (int i=0; i!=5; ++i) deck.add(new NorwoodRanger());
         for (int i=0; i!=5; ++i) deck.add(new SavorTheMoment());
         for (int i=0; i!=5; ++i) deck.add(new VolcanicHammer());
         for (int i=0; i!=5; ++i) deck.add(new Deflection());
-        for (int i=0; i!=5; ++i) deck.add(new Cancel()); 
+        for (int i=0; i!=5; ++i) deck.add(new Cancel());
+        for (int i=0; i!=5; ++i) deck.add(new Afflict());
+        for (int i=0; i!=5; ++i) deck.add(new DayOfJudgment());
+        for (int i=0; i!=5; ++i) deck.add(new FalsePeace());
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
