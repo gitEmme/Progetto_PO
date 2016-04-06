@@ -14,8 +14,11 @@ import cardgame.cards.WorldAtWar;
 import cardgame.cards.Boiling_Earth;
 import cardgame.cards.SavorTheMoment;
 import cardgame.cards.VolcanicHammer;
+import cardgame.cards.DayOfJudgment;
+import cardgame.cards.FalsePeace;
 
 // Istantanee:
+import cardgame.cards.Afflict;
 import cardgame.cards.Homeopathy;
 import cardgame.cards.Darkness;
 import cardgame.cards.AggressiveUrge;
@@ -28,9 +31,6 @@ import java.util.Deque;
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
-import cardgame.cards.Afflict;
-import cardgame.cards.DayOfJudgment;
-import cardgame.cards.FalsePeace;
 
 /*
 Signleton class maintaining global game properties.
