@@ -19,9 +19,9 @@ public enum Phases {
     public int get_idx() { return this.ordinal(); }
     public static Phases idx(int i) { return vals[i]; }
     
-    static final int DRAW_FILTER=1;
-    static final int UNTAP_FILTER=2;
-    static final int COMBAT_FILTER=4;
-    static final int MAIN_FILTER=8;
-    static final int END_FILTER=16;
+    public static final int DRAW_FILTER=1;
+    public static final int UNTAP_FILTER=2;
+    public static final int COMBAT_FILTER=4;
+    public static final int MAIN_FILTER=8;
+    public static final int END_FILTER=16;
 }
