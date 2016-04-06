@@ -37,19 +37,19 @@ public class DefaultCombatPhase implements Phase {
     
     public void execute() {
         Player current_player = CardGame.instance.get_current_player();
+        Player current_adversary = CardGame.instance.get_current_adversary();
         int response_player_idx = (CardGame.instance.get_player(0) == current_player)?1:0;
+        int current_player_idx = (CardGame.instance.get_player(1) == current_adversary)?1:0;
         
         System.out.println(current_player.get_name() + ": combat phase");
         
         CardGame.instance.get_triggers().trigger(Phases.COMBAT_FILTER);
         // TODO combat
         
-        
-        
-        combat_phase(current_player, response_player_idx);
+        combat_phase(current_player, current_adversary, response_player_idx, current_player_idx);
     }
     
-    public void giocaIstanaeaCombatPhase(Player current_player, int response_player_idx){
+    public void giocaIstanaeaCombatPhase_Atk(Player current_player, int response_player_idx){
         int number_passes=0;
         while (number_passes<2) {
             if (play_available_effect_CombatPhase(CardGame.instance.get_player(response_player_idx)))
@@ -58,9 +58,20 @@ public class DefaultCombatPhase implements Phase {
             
             response_player_idx = (response_player_idx+1)%2;
         }
+    }
+    
+    public void giocaIstanaeaCombatPhase_Def(Player current_adversary, int current_player_idx){
+        int number_passes=0;
+        while (number_passes<2) {
+            if (play_available_effect_CombatPhase(CardGame.instance.get_player(current_player_idx)))
+                number_passes=0;
+            else ++number_passes;
+            
+            current_player_idx = (current_player_idx+1)%2;
+        }
         
         CardGame.instance.get_stack().resolve();
-    }
+    }   
     
     // looks for all playable effects from cards in hand and creatures in play
     // and asks player for which one to play
@@ -99,43 +110,116 @@ public class DefaultCombatPhase implements Phase {
         return true;
     }
     
-    private boolean combat_phase(Player active_player, int response_player_idx) {
+    private void combat_phase(Player current_player, Player current_adversary, int response_player_idx, int current_player_idx){
         
         
         //collect and display available monster in the field
-        if (active_player.get_creatures().isEmpty()){
-            System.out.println("no creatures on the field, " + active_player.get_name() + " can't attack or defend");
-            return false;
+        if (current_player.get_creatures().isEmpty()){
+            System.out.println("no creatures on the field, " + current_player.get_name() + " can't attack");
         }
         else{
-            Scanner reader = CardGame.instance.get_scanner();
-            boolean pass = false;
-            
-            while(!pass){
-                System.out.println(active_player.get_name() + " select a monster for attack, 0 to pass");
-                
-                int i=0;
-                //print monster in the field
-                for ( Creature c:active_player.get_creatures()) {
-                    if(!c.isTapped())
-                        System.out.println(Integer.toString(i+1)+") " + c.name() +
-                                " ["+ c.get_power() + "/" + c.get_toughness() + "]" );
-                    ++i;
-                }
-                
-                //user choice monster for attack
-                int idx= reader.nextInt()-1;
-                if (idx<0 || idx>=active_player.get_creatures().size()) return false;
-                
-                System.out.println("il mostro " + active_player.get_creatures().get(idx).name() + " ha dichiarato un'azione di attacco");
-                active_player.get_creatures().get(idx).tap();
-                attaccanti.add(active_player.get_creatures().get(idx));
-            }
-            
-            
+            dichiara_Atk(current_player);
+        }
+        giocaIstanaeaCombatPhase_Atk(current_player, response_player_idx);
+        if( current_adversary.get_creatures().isEmpty())    
+            System.out.println("no creatures on the field, " + current_player.get_name() + " can't defend");
+        else{
+            dichiara_Def(current_adversary);
+        }
+        giocaIstanaeaCombatPhase_Def(current_adversary, current_player_idx);
             //giocaIstanaeaCombatPhase(active_player, response_player_idx);
             //active_player.get_creatures().get(idx).attack();
-            return true;
-        }
-    }  
+    }
+
+    private boolean dichiara_Atk(Player current_player){
+        Scanner reader = CardGame.instance.get_scanner();
+            
+            if(!CardGame.instance.get_current_player().get_creatures().isEmpty()){
+                boolean alltapped = false;
+                boolean pass = false;
+                
+                while(!pass && !alltapped){
+                    System.out.println(current_player.get_name() + " select a monster for attack, 0 to pass");
+                    
+                    int i=0;
+                    //print monster in the field
+                    for (Creature c:current_player.get_creatures()) {
+                        if(!c.isTapped())
+                            System.out.println(Integer.toString(i+1)+") " + c.name() +
+                                    " ["+ c.get_power() + "/" + c.get_toughness() + "]" );
+                        ++i;
+                    }
+                    
+                    //user choice monster for attack
+                    int idx= reader.nextInt()-1;
+                    if (idx<0 || idx>=current_player.get_creatures().size()) return false;
+                    
+                    if(CardGame.instance.get_current_player().get_creatures().get(idx).isTapped())
+                        System.out.println("il mostro " + current_player.get_creatures().get(idx).name() + " ha già dichiarato la sua azione di attacco");
+                    else{
+                        System.out.println("il mostro " + current_player.get_creatures().get(idx).name() + " ha dichiarato un'azione di attacco");
+                        current_player.get_creatures().get(idx).tap();
+                        attaccanti.add(current_player.get_creatures().get(idx));
+                    }
+                    
+                    alltapped = true;
+                    for(int z = 0; z < CardGame.instance.get_current_player().get_creatures().size(); z++){
+                        if(!CardGame.instance.get_current_player().get_creatures().get(z).isTapped()){
+                            alltapped = false;
+                            if(!alltapped)
+                                break;
+                        }
+                    }
+                
+                }
+                return true;
+            }
+            return false;
+    }
+    
+    private boolean dichiara_Def(Player current_adversary){
+        Scanner reader = CardGame.instance.get_scanner();
+            
+            if(!CardGame.instance.get_current_adversary().get_creatures().isEmpty()){
+                boolean alltapped = false;
+                boolean pass = false;
+                
+                while(!pass && !alltapped){
+                    System.out.println(current_adversary.get_name() + " select a monster for defend, 0 to pass");
+                    
+                    int i=0;
+                    //print monster in the field
+                    for (Creature c:current_adversary.get_creatures()) {
+                        if(!c.isTapped())
+                            System.out.println(Integer.toString(i+1)+") " + c.name() +
+                                    " ["+ c.get_power() + "/" + c.get_toughness() + "]" );
+                        ++i;
+                    }
+                    
+                    //user choice monster for attack
+                    int idx= reader.nextInt()-1;
+                    if (idx<0 || idx>=current_adversary.get_creatures().size()) return false;
+                    
+                    if(CardGame.instance.get_current_adversary().get_creatures().get(idx).isTapped())
+                        System.out.println("il mostro " + current_adversary.get_creatures().get(idx).name() + " ha già dichiarato la sua azione di attacco");
+                    else{
+                        System.out.println("il mostro " + current_adversary.get_creatures().get(idx).name() + " ha dichiarato un'azione di attacco");
+                        current_adversary.get_creatures().get(idx).tap();
+                        attaccanti.add(current_adversary.get_creatures().get(idx));
+                    }
+                    
+                    alltapped = true;
+                    for(int z = 0; z < CardGame.instance.get_current_adversary().get_creatures().size(); z++){
+                        if(!CardGame.instance.get_current_adversary().get_creatures().get(z).isTapped()){
+                            alltapped = false;
+                            if(!alltapped)
+                                break;
+                        }
+                    }
+                
+                }
+                return true;
+            }
+            return false;
+    }
 }
