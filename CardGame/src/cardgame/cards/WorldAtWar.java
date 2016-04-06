@@ -13,11 +13,12 @@ import cardgame.Card;
 import cardgame.AbstractCardEffect;
 import cardgame.Effect;
 import cardgame.Player;
-import cardgame.*;
-import static java.lang.System.console;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Scanner;
+import cardgame.DefaultCombatPhase;
+import cardgame.DefaultMainPhase;
+import cardgame.DefaultEndPhase;
+import cardgame.CardGame;
+import cardgame.SkipPhase;
+import cardgame.Phases;
 
 /**
  *
@@ -64,9 +65,6 @@ public class WorldAtWar implements Card {
            CardGame.instance.get_current_player().set_phase(Phases.MAIN, new DefaultMainPhase());
            CardGame.instance.get_current_player().next_phase();
            CardGame.instance.get_current_player().set_phase(Phases.END, new DefaultEndPhase());
-           
-           //System.out.println("Starting CUSTOM MAIN PHASE");
-           //CardGame.instance.get_current_player().set_phase(Phases.MAIN, new DefaultMainPhase());
         }   
     
     }
