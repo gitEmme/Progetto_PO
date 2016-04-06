@@ -17,7 +17,6 @@ Stregonerie da fare:
 Boiling Earth
 Savor the moment
 Volcanic Hammer
-World at war
 
 Istantanee da fare:
 
@@ -31,3 +30,4 @@ Deflection
 Carte funzionanti:
 
 Fatigue
+World At War
