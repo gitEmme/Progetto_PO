@@ -30,7 +30,7 @@ public class AggressiveUrgeDecorator extends CreatureDecorator {
     public int get_toughness()
     {
         
-        return DecoratedCreature.get_power()+1;
+        return DecoratedCreature.get_toughness()+1;
         
     }
     
