@@ -12,3 +12,12 @@ Mostri da fare:
 Benevolent Ancestor
 Bronze Sable
 Norwood Ranger
+
+Stregonerie da fare:
+Boiling Earth
+
+
+
+Carte funzionanti:
+
+Fatigue
