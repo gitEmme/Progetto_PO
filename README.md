@@ -31,3 +31,4 @@ Carte funzionanti:
 
 Fatigue
 World At War
+Norwood ranger
