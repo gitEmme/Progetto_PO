@@ -57,8 +57,8 @@ public class DefaultMainPhase implements Phase {
         for ( Creature c:active_player.get_creatures()) {
             for (Effect e:c.avaliable_effects()) {
                 available_effects.add(e);
-                System.out.println(Integer.toString(i+1)+") " + c.name() + 
-                    " ["+ e + "]" );
+                System.out.println(Integer.toString(i+1)+") " + "Creatura in campo:" + c.name() + 
+                    " ["+ e + "]" + "power:" + c.get_power() + "toughness:"  + c.get_toughness());
                 ++i;
             }
         }
