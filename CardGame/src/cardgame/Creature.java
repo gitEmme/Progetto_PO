@@ -14,6 +14,14 @@ public interface Creature {
     int get_power();
     int get_toughness();
     
+    //metodi implementati
+    public int getCurrent_power();
+    public int getCurrent_toughness();
+    public int getCurrent_shield();
+    public void setCurrent_power(int dmg);
+    public void setCurrent_toughness(int dmg);
+    public void setCurrent_shield(int dmg);
+    
     // returns all the effects associated to this creature
     List<Effect> effects();
     
