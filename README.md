@@ -31,4 +31,6 @@ Carte funzionanti:
 
 Fatigue
 World At War
-Norwood ranger
+Volcanic hammer
+Aggressive urge
+Afflict
