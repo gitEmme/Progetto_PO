@@ -75,7 +75,14 @@ public class BenevolentAncestor implements Card {
                                         return tap(); 
                                     }
                                     public void resolve() {
-                                        //risolvo effetto
+                                        int flag;
+                                        System.out.println("Do you want increase the shield at a monster o at Player?");
+                                        System.out.println("Player press 0 else press 1: ");
+                                        flag = CardGame.instance.get_scanner().nextInt();
+                                        if (flag == 0) {
+                                            CardGame.instance.get_current_player().set_shield(CardGame.instance.get_current_player().get_shield()-1);
+                                        }
+                                    
                                     }
                                     
                                     public String toString() { 
@@ -111,6 +118,9 @@ public class BenevolentAncestor implements Card {
         public List<Effect> avaliable_effects() { 
             return (is_tapped)?tap_effects:all_effects; 
         }
+        
+        // Aggiunta di uno scudo impostato a zero di default
+        public int shield = 0;
     }
     
 }

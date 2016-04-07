@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package cardgame.cards;
 
+import cardgame.Creature;
+import cardgame.Creature;
+import cardgame.Effect;
+import cardgame.Effect;
 import java.util.List;
-import cardgame.*;
 
-/**
- *
- * @author fecarrar
- */
+
 public class CreatureDecorator implements Creature {
 
     protected Creature DecoratedCreature;

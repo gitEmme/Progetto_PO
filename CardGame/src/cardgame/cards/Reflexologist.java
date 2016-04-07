@@ -47,6 +47,10 @@ public class Reflexologist implements Card{
 
         public List<Effect> effects() { return all_effects; }
         public List<Effect> avaliable_effects() { return (is_tapped)?tap_effects:all_effects; }
+        
+        // Aggiunta di uno scudo impostato a zero di default
+        public int shield = 0;
+        
     }
     
     

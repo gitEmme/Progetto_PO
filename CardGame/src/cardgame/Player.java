@@ -61,7 +61,16 @@ public class Player {
     public void heal(int pts) { 
         life += pts; 
     }
-            
+    
+    // Aggiunta di uno scudo impostato a zero di default
+    public int shield = 0;
+    public int get_shield () {
+        return shield;
+    }
+    
+    public void set_shield (int shield) { // incrementare o decrementare il valore "int shield"
+        this.shield = shield;                 // deve essere >= 0, sempre!
+    }
             
     // player looses. might need strategy/decorator
     public void lose(String s) { throw new EndOfGame(name + " lost the game: "+ s); }            

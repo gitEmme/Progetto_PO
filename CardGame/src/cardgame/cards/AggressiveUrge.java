@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package cardgame.cards;
 
@@ -16,10 +12,6 @@ import cardgame.Player;
 import cardgame.TriggerAction;
 import java.util.Scanner;
 
-/**
- *
- * @author fecarrar
- */
 public class AggressiveUrge implements Card {
     
     public Effect get_effect(Player p) {return new AggressiveUrgeEffect(p, this);}
@@ -45,23 +37,29 @@ public class AggressiveUrge implements Card {
                 
         public void resolve(){
         int nCreatures = owner.get_creatures().size();/*memorizzo il numero di creature nel campo*/
-        if(nCreatures>0)
+        int creatureSelected=0;
+        try
         {    
-            System.out.println("nCreaures = " +nCreatures);
-            System.out.println("Select one creature for which apply the effect: 0 - " + (nCreatures -1));
-            Scanner s = CardGame.instance.get_scanner();/*seleziono quale creatura applicare l'effetto impostare public get_scanner*/
-            int creatureSelected = s.nextInt();
+            /*System.out.println("nCreatures = " +nCreatures);*/
+            do
+            {    
+                System.out.println("Select one creature for which apply the effect: 0 - " + (nCreatures -1));
+                Scanner s = CardGame.instance.get_scanner();/*seleziono quale creatura applicare l'effetto impostare public get_scanner*/
+                creatureSelected = s.nextInt();
+            }while(creatureSelected<0);    
         
             old = owner.get_creatures().remove(creatureSelected);/*salvo la vecchia creatura e la rimuovo dal campo*/
             decorated = new AggressiveUrgeDecorator(old);/*creo la nuova creatura da modificare(decorare)*/
             owner.get_creatures().add(decorated);/*aggiungo la creatura modificata al campo*/
-            System.out.println("Power and difesa: " + decorated.get_power() + decorated.get_toughness());
+            System.out.println("Creature name" + decorated + "Power and toughness: " + decorated.get_power()  + " " +  decorated.get_toughness() );
             CardGame.instance.get_triggers().register(Phases.END_FILTER, this);/*seleziono il turno e se finisce eseguo il trigger (execute), end_filter impostato a public*/
         }
-        else
+        catch(IndexOutOfBoundsException e)
         {    
             System.out.println("Non ci sono carte in campo!");
-        }    
+        }  
+        
+        
         } 
 
         @Override

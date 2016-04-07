@@ -14,6 +14,7 @@ import cardgame.Effect;
 import cardgame.Effect;
 import cardgame.Player;
 import cardgame.Player;
+import cardgame.*;
 
 /**
  *
@@ -22,7 +23,8 @@ import cardgame.Player;
 public class Boiling_Earth implements Card{
     private class Boiling_EarthEffect extends AbstractCardEffect {
         public Boiling_EarthEffect (Player p, Card c) {super (p,c);}
-        public void resolve(){}
+        public void resolve(){
+        }
     }
     public Effect get_effect(Player owner) { 
         return new Boiling_EarthEffect(owner, this);

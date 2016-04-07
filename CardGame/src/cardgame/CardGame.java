@@ -1,5 +1,6 @@
 package cardgame;
 
+
 // Carte:
 //  Mostri:
 
@@ -17,7 +18,7 @@ import cardgame.cards.VolcanicHammer;
 import cardgame.cards.DayOfJudgment;
 import cardgame.cards.FalsePeace;
 
-// Istantanee:
+ // Istantanee:
 import cardgame.cards.Afflict;
 import cardgame.cards.Homeopathy;
 import cardgame.cards.Darkness;
@@ -49,21 +50,21 @@ public class CardGame {
         ArrayList<Card> deck = new ArrayList<Card>();
         for (int i=0; i!=5; ++i) deck.add(new Homeopathy());
         for (int i=0; i!=5; ++i) deck.add(new Reflexologist());
-        for (int i=0; i!=5; ++i) deck.add(new BenevolentAncestor());
+        /*for (int i=0; i!=5; ++i) deck.add(new BenevolentAncestor());
         for (int i=0; i!=5; ++i) deck.add(new Fatigue());
-        for (int i=0; i!=5; ++i) deck.add(new Darkness());
+        for (int i=0; i!=5; ++i) deck.add(new Darkness());*/
         for (int i=0; i!=5; ++i) deck.add(new WorldAtWar());
-        for (int i=0; i!=5; ++i) deck.add(new Boiling_Earth());
-        for (int i=0; i!=5; ++i) deck.add(new Bronze_Sable());
+        /*for (int i=0; i!=5; ++i) deck.add(new Boiling_Earth());
+        for (int i=0; i!=5; ++i) deck.add(new Bronze_Sable()); */
         for (int i=0; i!=5; ++i) deck.add(new AggressiveUrge());
-        for (int i=0; i!=5; ++i) deck.add(new NorwoodRanger());
+       /* for (int i=0; i!=5; ++i) deck.add(new NorwoodRanger());
         for (int i=0; i!=5; ++i) deck.add(new SavorTheMoment());
         for (int i=0; i!=5; ++i) deck.add(new VolcanicHammer());
         for (int i=0; i!=5; ++i) deck.add(new Deflection());
         for (int i=0; i!=5; ++i) deck.add(new Cancel());
         for (int i=0; i!=5; ++i) deck.add(new Afflict());
         for (int i=0; i!=5; ++i) deck.add(new DayOfJudgment());
-        for (int i=0; i!=5; ++i) deck.add(new FalsePeace());
+        for (int i=0; i!=5; ++i) deck.add(new FalsePeace());*/
         
         instance.get_player(0).set_deck(deck.iterator());
         instance.get_player(1).set_deck(deck.iterator());
@@ -82,10 +83,12 @@ public class CardGame {
         Players[0]=new Player();
         Players[0].set_name("Player 1");
         Players[0].set_phase(Phases.DRAW,new SkipPhase(Phases.DRAW));
+        Players[0].get_shield();
         
         
         Players[1]=new Player();
         Players[1].set_name("Player 2");
+        Players[1].get_shield();
     }
     
     //execute game
@@ -117,7 +120,7 @@ public class CardGame {
     public Player next_player() { return turn_manager_stack.peek().next_player(); }
     
     
-    // Stack access
+    // Stack access (effetti)
     private CardStack stack = new CardStack();
     public CardStack get_stack() { return stack; }
     

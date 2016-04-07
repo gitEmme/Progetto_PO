@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package cardgame.cards;
 
@@ -16,10 +12,7 @@ import cardgame.Player;
 import java.util.List;
 import java.util.ArrayList;
 
-/**
- *
- * @author fecarrar
- */
+
 public class NorwoodRanger implements Card {
     /*implemento i metodi di card e quindi creo la carta*/
     public String name() { return "Norwood Ranger";} /* nome della creatura*/
