@@ -52,8 +52,26 @@ public class Player {
         return life;
     }
     
+    public int get_shield() { return 0; }
+    private int current_shield = 0;
+    
+    public int getCurrent_shield() {
+        return current_shield;
+    }
+        
+    public void setCurrent_shield(int dmg) {
+        this.current_shield += dmg;
+    }
+    
+    public void reset_shield() { current_shield = get_shield(); }
+    
     // need to attach strategy/decorator
     public void inflict_damage(int pts) {
+        if(getCurrent_shield() > pts)
+            setCurrent_shield(-pts);
+        else
+            pts = pts - getCurrent_shield();
+            reset_shield();
         life -= pts;
         if (life <=0) lose("received fatal damage");
     }
@@ -61,7 +79,7 @@ public class Player {
     public void heal(int pts) { 
         life += pts; 
     }
-    
+            
             
     // player looses. might need strategy/decorator
     public void lose(String s) { throw new EndOfGame(name + " lost the game: "+ s); }            
