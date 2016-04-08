@@ -32,16 +32,37 @@ public abstract class AbstractCreature implements Creature {
         }
         
         public boolean isTapped() { return is_tapped; }
-        public void attack() {
-            System.out.println("ALLAH AKBAR! BOOM!");
+        
+        public void attack_creature(Creature c, int dmg) {
+            c.defend(this, dmg);
         } // to do in assignment 2
-        public void defend(Creature c) {} // to do in assignment 2
-        public void inflict_damage(int dmg) { 
-            damage_left -= dmg; 
-            if (damage_left<=0)
-                owner.destroy(this);        
+        
+        public void attack_player(Player avversario, int dmg){
+            avversario.inflict_damage(dmg);
         }
         
+        public void defend(Creature c, int dmg) {
+            int real_dmg = 0;
+            if(dmg > this.getCurrent_shield())
+                real_dmg = dmg - this.getCurrent_shield();
+            System.out.println(c.name() + " attaccando ha inflitto " + real_dmg + " danni al mostro " + this.name());
+            this.inflict_damage(dmg);
+        } // to do in assignment 2
+        
+        public void inflict_damage(int dmg) {
+            if(getCurrent_shield() > dmg)
+                setCurrent_shield(-dmg);
+            else
+                dmg = dmg - getCurrent_shield();
+                reset_shield();
+                damage_left -= dmg;
+                if (damage_left<=0)
+                    owner.destroy(this);       
+        }
+        
+        
+        
         public void reset_damage() { damage_left = get_toughness(); }
+        public void reset_shield() { damage_left = get_shield(); }
     
 }
