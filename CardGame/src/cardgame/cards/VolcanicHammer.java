@@ -25,47 +25,42 @@ public class VolcanicHammer implements Card {
     
     public String toString() { return name() + "[" + rule_text() +"]";}
     
-    private class VolcanicHammerEffect extends AbstractCardEffect
-    {
-         VolcanicHammerEffect(Player p,Card c){super(p,c);}
+    private class VolcanicHammerEffect extends AbstractCardEffect {
+        VolcanicHammerEffect(Player p,Card c) {
+             super(p,c);
+        }
          
-         public void resolve(){
+        public void resolve(){
          
-             int target=0;
-             int creatureSelected=0;
-             int creatures=0;
-             Scanner s=CardGame.instance.get_scanner();
+            int target=0;
+            int creatureSelected=0;
+            int creatures=0;
+            Scanner s=CardGame.instance.get_scanner();
              
-             
-             do
-             {    
+            do {    
                 System.out.println("Seleziona il bersaglio: 0 per l'avversario 1 per la creatura");
                 target=s.nextInt();
-             }while(target!=0 && target !=1);   
+            }while(target!=0 && target !=1);   
              
-             if(target==0)
-             {
-                 CardGame.instance.get_current_adversary().inflict_damage(3);/*get_current_adversary e get_player public*/
-             }
-             
-             else
-             {
-                 creatures=CardGame.instance.get_current_adversary().get_creatures().size();
+            if(target==0) {
+                CardGame.instance.get_current_adversary().inflict_damage(3);/*get_current_adversary e get_player public*/
+            }
+            else {
+                creatures=CardGame.instance.get_current_adversary().get_creatures().size();
                  
-                 try
-                 {
-                     do
-                     {
-                         System.out.println("Select one creature for which apply the effect: 0 - " + (creatures -1));
-                         creatureSelected=s.nextInt();
-                     }while(creatureSelected<0);
-                     
-                      CardGame.instance.get_current_adversary().get_creatures().get(creatureSelected).inflict_damage(3);
-                 }catch(IndexOutOfBoundsException e){System.out.println("Non ci sono carte in campo!");};    
-         }
-    }     
-    
+    for(int i=0; i<creatures; i++) {
+        System.out.println("Creature in the opponent's field:" + " " + i + CardGame.instance.get_current_adversary().get_creatures().get(i).name() + "Creature attack= " + " " +CardGame.instance.get_current_adversary().get_creatures().get(i).get_power() + "Creature toughness= " + " " +CardGame.instance.get_current_adversary().get_creatures().get(i).get_toughness());
     }
-    
-        
+
+
+    try {
+        do {
+            System.out.println("Select one creature for which apply the effect: 0 - " + (creatures -1));
+            creatureSelected=s.nextInt();
+            }while(creatureSelected<0);
+    CardGame.instance.get_current_adversary().get_creatures().get(creatureSelected).inflict_damage(3);
+    }catch(IndexOutOfBoundsException e){System.out.println("Non ci sono carte in campo!");};    
+            }
+        }        
+    }
 }
