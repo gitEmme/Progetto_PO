@@ -12,6 +12,7 @@ import cardgame.Card;
 import cardgame.CardGame;
 import cardgame.Creature;
 import cardgame.Effect;
+import cardgame.Phases;
 import cardgame.Player;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,11 @@ public class BenevolentAncestor implements Card {
         return false; 
     }
 
+    @Override
+    public Effect get_effect(Player owner) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
     private class BenevolentAncestorEffect extends AbstractCreatureCardEffect {
@@ -55,11 +61,6 @@ public class BenevolentAncestor implements Card {
         protected Creature create_creature() { 
             return new BenevolentAncestorCreature(owner); 
         }
-    }
-    
-    public Effect get_effect(Player p) { 
-        return new BenevolentAncestorEffect(p,this);
-
     }
     
     
@@ -76,12 +77,29 @@ public class BenevolentAncestor implements Card {
                                     }
                                     public void resolve() {
                                         int flag;
-                                        System.out.println("Do you want increase the shield at a monster o at Player?");
-                                        System.out.println("Player press 0 else press 1: ");
-                                        flag = CardGame.instance.get_scanner().nextInt();
+                                        int monster;
+                                        do {
+                                            System.out.println("Do you want increase the shield at a monster o at Player?");
+                                            System.out.println("Increase the shield at Player press 0 else press 1: ");
+                                            flag = CardGame.instance.get_scanner().nextInt();
+                                        } while(flag != 0 || flag != 1);
+                                        
                                         if (flag == 0) {
-                                            CardGame.instance.get_current_player().set_shield(CardGame.instance.get_current_player().get_shield()-1);
+                                            CardGame.instance.get_current_player().setCurrent_shield(CardGame.instance.get_current_player().getCurrent_shield()-1);
+                                            System.out.println("Now your shield has as value: " +CardGame.instance.get_current_player().getCurrent_shield());
                                         }
+                                        if (flag == 1) {
+                                            System.out.println("Creatures in your field, select a monster: ");
+                                            for(int i=0; i<CardGame.instance.get_current_player().get_creatures().size(); i++) {
+                                                System.out.println(i + CardGame.instance.get_current_player().get_creatures().get(i).name());                                            
+                                            }
+                                            monster = CardGame.instance.get_scanner().nextInt();
+                                            CardGame.instance.get_current_player().get_creatures().get(monster).setCurrent_shield(CardGame.instance.get_current_player().get_creatures().get(monster).getCurrent_shield()+1);
+                                            System.out.println("The creature " + CardGame.instance.get_current_player().get_creatures().get(monster).name()+ " has as shield value: " + CardGame.instance.get_current_player().get_creatures().get(monster).get_shield());
+                                        }
+                                        
+                                        
+                                        
                                     
                                     }
                                     
@@ -97,10 +115,16 @@ public class BenevolentAncestor implements Card {
             return "Benevolent Ancestor"; 
         }
         
-        @Override
-        public void attack() {}
-        @Override
-        public void defend(Creature c) {}
+        public void attack_creature(Creature c, int dmg) {
+            super.attack_creature(c, dmg);
+        }
+        public void attack_player(Player avversario, int dmg){
+            super.attack_player(avversario, dmg);
+        }
+        public void defend(Creature c, int dmg) {
+            super.defend(c, dmg);
+        }
+        
         @Override
         public int get_power() { 
             return 0; 
@@ -118,9 +142,41 @@ public class BenevolentAncestor implements Card {
         public List<Effect> avaliable_effects() { 
             return (is_tapped)?tap_effects:all_effects; 
         }
+                
+        public int get_shield() { 
+            return 0; 
+        }
         
-        // Aggiunta di uno scudo impostato a zero di default
-        public int shield = 0;
+        private int current_power = 0;
+        
+        private int current_toughness = 4;
+        
+        private int current_shield = 0;
+        
+        
+        public int getCurrent_power(){
+            return current_power;
+        }
+
+        public void setCurrent_power(int dmg) {
+            this.current_power += dmg;
+        }
+        
+        public int getCurrent_toughness() {
+            return current_toughness;
+        }
+
+        public void setCurrent_toughness(int dmg) {
+            this.current_toughness += dmg;
+        }
+
+        public int getCurrent_shield() {
+            return current_shield;
+        }
+        
+        public void setCurrent_shield(int dmg) {
+            this.current_shield += dmg;
+        }
     }
     
 }
