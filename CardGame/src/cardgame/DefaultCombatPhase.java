@@ -49,6 +49,7 @@ public class DefaultCombatPhase implements Phase {
         combat_phase(current_player, current_adversary, response_player_idx, current_player_idx);
     }
     
+    // GIOCA ISTANTANEE, PRIMA DIFENSORE POI ATTACCANTE
     public void giocaIstanaeaCombatPhase_Atk(Player current_player, int response_player_idx){
         int number_passes=0;
         while (number_passes<2) {
@@ -60,6 +61,7 @@ public class DefaultCombatPhase implements Phase {
         }
     }
     
+    // GIOCA INSTANTANEE, PRIMA ATTACCANTE POI DIFENSORE
     public void giocaIstanaeaCombatPhase_Def(Player current_adversary, int current_player_idx){
         int number_passes=0;
         while (number_passes<2) {
@@ -73,15 +75,11 @@ public class DefaultCombatPhase implements Phase {
         CardGame.instance.get_stack().resolve();
     }   
     
-    // looks for all playable effects from cards in hand and creatures in play
-    // and asks player for which one to play
-    // includes creatures and sorceries only if is_main is true
+    // VISUALIZZA EFFETTI GIOCABILI PER LA COMBAT PHASE
     private boolean play_available_effect_CombatPhase(Player active_player) {
-        //collect and display available effects...
         ArrayList<Effect> available_effects = new ArrayList<>();
         Scanner reader = CardGame.instance.get_scanner();
 
-        //...cards first
         System.out.println(active_player.get_name() + " select card/effect to play, 0 to pass");
         int i=0;
         for( Card c:active_player.get_hand() ) {
@@ -91,8 +89,6 @@ public class DefaultCombatPhase implements Phase {
                 ++i;
             }
         }
-        
-        //...creature effects last
         for ( Creature c:active_player.get_creatures()) {
             for (Effect e:c.avaliable_effects()) {
                 available_effects.add(e);
@@ -101,8 +97,6 @@ public class DefaultCombatPhase implements Phase {
                 ++i;
             }
         }
-        
-        //get user choice and play it
         int idx= reader.nextInt()-1;
         if (idx<0 || idx>=available_effects.size()) return false;
 
@@ -110,6 +104,7 @@ public class DefaultCombatPhase implements Phase {
         return true;
     }
     
+    // COMBAT PHASE
     private void combat_phase(Player current_player, Player current_adversary, int response_player_idx, int current_player_idx){
         
         
@@ -127,10 +122,42 @@ public class DefaultCombatPhase implements Phase {
             dichiara_Def(current_adversary);
         }
         giocaIstanaeaCombatPhase_Def(current_adversary, current_player_idx);
-            //giocaIstanaeaCombatPhase(active_player, response_player_idx);
-            //active_player.get_creatures().get(idx).attack();
+        
+        if(!attaccanti.isEmpty()){
+            for(int i=attaccanti.size()-1; i>=0; i--){
+                int current_power = attaccanti.get(i).getCurrent_power();
+                int initial_currentpower = current_power;
+                int danno_difensori = 0;
+                while(current_power > 0){
+                    if(difensori.isEmpty() && initial_currentpower == current_power){
+                        int real_dmg = 0;
+                        if(current_power > current_adversary.getCurrent_shield())
+                            real_dmg = current_power - current_adversary.getCurrent_shield();
+                        System.out.println(attaccanti.get(i).name() + " attaccando ha inflitto " + real_dmg + " danni al giocatore " + current_adversary.get_name());
+                        attaccanti.get(i).attack_player(current_adversary, current_power);
+                        current_power = 0;
+                    }
+                    else{
+                        danno_difensori = difensori.get(difensori.size()-1).getCurrent_power();
+                        attaccanti.get(i).attack_creature(difensori.get(difensori.size()-1), current_power);
+                        current_power = current_power - (difensori.get(difensori.size()-1).getCurrent_toughness() + difensori.get(difensori.size()-1).getCurrent_shield());
+                    }
+                    if(current_power <= 0){
+                        System.out.println("i mostri difensori difendendo hanno inflitto " + danno_difensori + " danni al mostro " + attaccanti.get(i).name());
+                        attaccanti.get(i).inflict_damage(danno_difensori);
+                    }
+                }
+            }
+        }
+        for(int i=0; i<attaccanti.size(); i++){
+            attaccanti.remove(i);
+        }
+        for(int i=0; i<difensori.size(); i++){
+            difensori.remove(i);
+        }
     }
 
+    // DICHIARAZIONE ATTACCANTI
     private boolean dichiara_Atk(Player current_player){
         Scanner reader = CardGame.instance.get_scanner();
             
@@ -177,6 +204,7 @@ public class DefaultCombatPhase implements Phase {
             return false;
     }
     
+    // DICHIARAZIONE DIFENSORI
     private boolean dichiara_Def(Player current_adversary){
         Scanner reader = CardGame.instance.get_scanner();
             
