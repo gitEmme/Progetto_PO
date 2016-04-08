@@ -7,16 +7,22 @@ Nella cartella "cards", ci sono le suddivisioni delle carte tra i membri del gru
 Se viene scaricata tutta la cartella, è possibile aprire CardGame con NetBeans
 
 
+
+
 Mostri da fare:
 
 Benevolent Ancestor
 Bronze Sable
 Norwood Ranger
 
+\/ \/ \/
+
 Stregonerie da fare:
 Boiling Earth
 Savor the moment
 Volcanic Hammer
+
+\/ \/ \/
 
 Istantanee da fare:
 
@@ -24,8 +30,7 @@ Cancel
 Darkness
 Deflection
 
-
-
+\/ \/ \/
 
 Carte funzionanti:
 
