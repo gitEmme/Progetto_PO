@@ -83,12 +83,10 @@ public class CardGame {
         Players[0]=new Player();
         Players[0].set_name("Player 1");
         Players[0].set_phase(Phases.DRAW,new SkipPhase(Phases.DRAW));
-        Players[0].get_shield();
         
         
         Players[1]=new Player();
         Players[1].set_name("Player 2");
-        Players[1].get_shield();
     }
     
     //execute game
