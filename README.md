@@ -13,11 +13,11 @@ Mostri da fare:
 
 Benevolent Ancestor
 Bronze Sable
-Norwood Ranger
 
 \/ \/ \/
 
 Stregonerie da fare:
+
 Boiling Earth
 Savor the moment
 Volcanic Hammer
@@ -39,3 +39,4 @@ World At War
 Volcanic hammer
 Aggressive urge
 Afflict
+Norwood Ranger
