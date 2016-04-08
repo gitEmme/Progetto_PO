@@ -61,8 +61,48 @@ public class Bronze_Sable implements Card{
     
     public List<Effect> effects() { return all_effects; }
     public List<Effect> avaliable_effects() { return (is_tapped)?tap_effects:all_effects;}
-    // Aggiunta di uno scudo impostato a zero di default
-    public int shield = 0;
+    
+    // METODI NUOVI O MODIFICATI DA IMPLEMENTARE PER OGNI MOSTRO
+    public void attack_creature(Creature c, int dmg) {
+        super.attack_creature(c, dmg);
+    }
+    public void attack_player(Player avversario, int dmg){
+        super.attack_player(avversario, dmg);
+    }
+    public void defend(Creature c, int dmg) {
+        super.defend(c, dmg);
+    }
+        
+    public int get_shield() { return 0; }
+        
+    private int current_power = 2;
+    private int current_toughness = 1;
+    private int current_shield = 0;
+        
+        
+    public int getCurrent_power(){
+        return current_power;
+    }
+
+    public void setCurrent_power(int dmg) {
+        this.current_power += dmg;
+    }
+        
+    public int getCurrent_toughness() {
+        return current_toughness;
+    }
+
+    public void setCurrent_toughness(int dmg) {
+        this.current_toughness += dmg;
+    }
+
+    public int getCurrent_shield() {
+        return current_shield;
+    }
+        
+    public void setCurrent_shield(int dmg) {
+        this.current_shield += dmg;
+    }
  }
     
     public String name() {return "Bronze Sable";}
