@@ -12,7 +12,6 @@ public class DefaultMainPhase implements Phase {
         int response_player_idx = (CardGame.instance.get_player(0) == current_player)?1:0;
         
         System.out.println(current_player.get_name() + ": main phase");
-        System.out.println(current_player.get_name() + ": has shield = " + current_player.get_shield());
         CardGame.instance.get_triggers().trigger(Phases.MAIN_FILTER);
         
         
