@@ -35,14 +35,56 @@ public class NorwoodRanger implements Card {
         protected Creature create_creature() { return new NorwoodRangerCreature(owner);}/*il seguente metodo restituisce l'effetto di invocare (posizionare in campo) la carta*/
     }
     
-    private class NorwoodRangerCreature extends AbstractCreature
-    {
+    private class NorwoodRangerCreature extends AbstractCreature {
+        
         /*creo la creatura implementando i metodi di AbstractCreature*/
         public String name() { return "Norwood Ranger";}/* nome della creatura*/
         public void attack() {}/*il metodo mi dice che la carta di attaccare durante la fase di combat (da implementare)*/
         public void defend(Creature c) {}/*la creatura si difende (da implementare)*/
         public int get_power() {return 2;}/*attacco della creatura*/
         public int get_toughness() {return 1;}/*resistenza della creatura*/
+        
+        // METODI NUOVI O MODIFICATI DA IMPLEMENTARE PER OGNI MOSTRO
+        public void attack_creature(Creature c, int dmg) {
+            super.attack_creature(c, dmg);
+        }
+        public void attack_player(Player avversario, int dmg){
+            super.attack_player(avversario, dmg);
+        }
+        public void defend(Creature c, int dmg) {
+            super.defend(c, dmg);
+        }
+        
+        public int get_shield() { return 0; }
+        
+        private int current_power = 2;
+        private int current_toughness = 1;
+        private int current_shield = 0;
+        
+        
+        public int getCurrent_power(){
+            return current_power;
+        }
+
+        public void setCurrent_power(int dmg) {
+            this.current_power += dmg;
+        }
+        
+        public int getCurrent_toughness() {
+            return current_toughness;
+        }
+
+        public void setCurrent_toughness(int dmg) {
+            this.current_toughness += dmg;
+        }
+
+        public int getCurrent_shield() {
+            return current_shield;
+        }
+        
+        public void setCurrent_shield(int dmg) {
+            this.current_shield += dmg;
+        }
         
         public List<Effect> effects() {return all_effects;}/*effetti della creatura*/
         public List<Effect> avaliable_effects() {return (is_tapped)?tap_effects:all_effects;}/*effetti disponibili della creatura */
@@ -62,7 +104,9 @@ public class NorwoodRanger implements Card {
                     
                 }
                 
-                public void resolve(){}/*risoluzione degli effetti nello stack*/
+                public void resolve(){
+                 System.out.println("Does nothing!");
+                }
                 public String toString() {return "Norwood Ranger non ha effetti";}/* descrizione degli effetti*/
             }
             );
