@@ -14,6 +14,7 @@ import cardgame.Creature;
 import cardgame.Effect;
 import cardgame.Phases;
 import cardgame.Player;
+import cardgame.TriggerAction;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class BenevolentAncestor implements Card {
 
     @Override
     public Effect get_effect(Player owner) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new BenevolentAncestor.BenevolentAncestorEffect(owner,this);
     }
 
     
@@ -61,10 +62,11 @@ public class BenevolentAncestor implements Card {
         protected Creature create_creature() { 
             return new BenevolentAncestorCreature(owner); 
         }
+       
     }
     
     
-    private class BenevolentAncestorCreature extends AbstractCreature {
+    public class BenevolentAncestorCreature extends AbstractCreature implements TriggerAction {
         ArrayList<Effect> all_effects= new ArrayList<>(); //Denota tutti gli effetti
         ArrayList<Effect> tap_effects= new ArrayList<>(); //Effetti che possono essere usati in quel turno
         
@@ -76,31 +78,32 @@ public class BenevolentAncestor implements Card {
                                         return tap(); 
                                     }
                                     public void resolve() {
-                                        int flag;
                                         int monster;
+                                        int choose;
                                         do {
                                             System.out.println("Do you want increase the shield at a monster o at Player?");
                                             System.out.println("Increase the shield at Player press 0 else press 1: ");
-                                            flag = CardGame.instance.get_scanner().nextInt();
-                                        } while(flag != 0 || flag != 1);
+                                            choose = CardGame.instance.get_scanner().nextInt();
+                                        } while(choose != 0 && choose != 1);
                                         
-                                        if (flag == 0) {
-                                            CardGame.instance.get_current_player().setCurrent_shield(CardGame.instance.get_current_player().getCurrent_shield()-1);
+                                        if (choose == 0) {
+                                            CardGame.instance.get_current_player().setCurrent_shield(CardGame.instance.get_current_player().getCurrent_shield()+1);
                                             System.out.println("Now your shield has as value: " +CardGame.instance.get_current_player().getCurrent_shield());
                                         }
-                                        if (flag == 1) {
+                                        if (choose == 1) {
                                             System.out.println("Creatures in your field, select a monster: ");
                                             for(int i=0; i<CardGame.instance.get_current_player().get_creatures().size(); i++) {
-                                                System.out.println(i + CardGame.instance.get_current_player().get_creatures().get(i).name());                                            
+                                                System.out.println(i+ " " + CardGame.instance.get_current_player().get_creatures().get(i).name());                                            
                                             }
-                                            monster = CardGame.instance.get_scanner().nextInt();
-                                            CardGame.instance.get_current_player().get_creatures().get(monster).setCurrent_shield(CardGame.instance.get_current_player().get_creatures().get(monster).getCurrent_shield()+1);
-                                            System.out.println("The creature " + CardGame.instance.get_current_player().get_creatures().get(monster).name()+ " has as shield value: " + CardGame.instance.get_current_player().get_creatures().get(monster).get_shield());
+                                            try {
+                                                monster = CardGame.instance.get_scanner().nextInt();
+                                                CardGame.instance.get_current_player().get_creatures().get(monster).setCurrent_shield(CardGame.instance.get_current_player().get_creatures().get(monster).getCurrent_shield()+1);
+                                                System.out.println("The creature " + CardGame.instance.get_current_player().get_creatures().get(monster).name()+ " has as shield value: " + CardGame.instance.get_current_player().get_creatures().get(monster).getCurrent_shield());
+                                            } catch (IndexOutOfBoundsException e) {
+                                                System.out.println("There aren't monster in the field");
+                                            }
                                         }
-                                        
-                                        
-                                        
-                                    
+                                        //CardGame.instance.get_triggers().register(Phases.END_FILTER, this);
                                     }
                                     
                                     public String toString() { 
@@ -108,6 +111,9 @@ public class BenevolentAncestor implements Card {
                                     }
                                 }
                 ); 
+        }
+        public void execute() {
+            
         }
         
         @Override
@@ -142,10 +148,6 @@ public class BenevolentAncestor implements Card {
         public List<Effect> avaliable_effects() { 
             return (is_tapped)?tap_effects:all_effects; 
         }
-                
-        public int get_shield() { 
-            return 0; 
-        }
         
         private int current_power = 0;
         
@@ -153,6 +155,9 @@ public class BenevolentAncestor implements Card {
         
         private int current_shield = 0;
         
+        public int get_shield() { 
+            return 0; 
+        }
         
         public int getCurrent_power(){
             return current_power;
