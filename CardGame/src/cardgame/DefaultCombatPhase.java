@@ -8,49 +8,25 @@ import java.util.Scanner;
 
 
 public class DefaultCombatPhase implements Phase {
-    private final ArrayList<Creature> attaccanti = new ArrayList<>();
-    private final ArrayList<Creature> difensori = new ArrayList<>();
-    
-    public List<Creature> get_Atk_creatures() {
-        return attaccanti;
-    }
-    
-    public void add_attaccante(Creature e) {
-        attaccanti.add(e);
-    }
-    
-    public void remove_Atk(Creature e) {
-        attaccanti.remove(e);
-    }
-    
-    public List<Creature> get_Def_creatures() {
-        return difensori;
-    }
-    
-    public void add_difensore(Creature e) { 
-        difensori.add(e); 
-    }
-    
-    public void remove_Def(Creature e) {
-        difensori.remove(e);
-    }
+    private final ArrayList<Integer> attaccanti = new ArrayList<>();
+    private final ArrayList<Integer> difensori = new ArrayList<>();
     
     public void execute() {
         Player current_player = CardGame.instance.get_current_player();
         Player current_adversary = CardGame.instance.get_current_adversary();
         int response_player_idx = (CardGame.instance.get_player(0) == current_player)?1:0;
-        int current_player_idx = (CardGame.instance.get_player(1) == current_adversary)?1:0;
+        int current_player_idx = (CardGame.instance.get_player(0) == current_adversary)?1:0;
         
         System.out.println(current_player.get_name() + ": combat phase");
         
         CardGame.instance.get_triggers().trigger(Phases.COMBAT_FILTER);
         // TODO combat
         
-        combat_phase(current_player, current_adversary, response_player_idx, current_player_idx);
+        combat_phase(response_player_idx, current_player_idx);
     }
     
     // GIOCA ISTANTANEE, PRIMA DIFENSORE POI ATTACCANTE
-    public void giocaIstanaeaCombatPhase_Atk(Player current_player, int response_player_idx){
+    public void giocaIstanaeaCombatPhase_Atk(int response_player_idx){
         int number_passes=0;
         while (number_passes<2) {
             if (play_available_effect_CombatPhase(CardGame.instance.get_player(response_player_idx)))
@@ -62,7 +38,7 @@ public class DefaultCombatPhase implements Phase {
     }
     
     // GIOCA INSTANTANEE, PRIMA ATTACCANTE POI DIFENSORE
-    public void giocaIstanaeaCombatPhase_Def(Player current_adversary, int current_player_idx){
+    public void giocaIstanaeaCombatPhase_Def(int current_player_idx){
         int number_passes=0;
         while (number_passes<2) {
             if (play_available_effect_CombatPhase(CardGame.instance.get_player(current_player_idx)))
@@ -105,113 +81,153 @@ public class DefaultCombatPhase implements Phase {
     }
     
     // COMBAT PHASE
-    private void combat_phase(Player current_player, Player current_adversary, int response_player_idx, int current_player_idx){
-        
-        
+    private void combat_phase(int response_player_idx, int current_player_idx){
+
         //collect and display available monster in the field
-        if (current_player.get_creatures().isEmpty()){
-            System.out.println("no creatures on the field, " + current_player.get_name() + " can't attack");
+        if (CardGame.instance.get_current_player().get_creatures().isEmpty()){
+            System.out.println("no creatures on the field, " + CardGame.instance.get_current_player().get_name() + " can't attack");
         }
         else{
-            dichiara_Atk(current_player);
+            dichiara_Atk(CardGame.instance.get_current_player(), attaccanti);
         }
-        giocaIstanaeaCombatPhase_Atk(current_player, response_player_idx);
-        if( current_adversary.get_creatures().isEmpty())    
-            System.out.println("no creatures on the field, " + current_player.get_name() + " can't defend");
+        giocaIstanaeaCombatPhase_Atk(response_player_idx);
+        if(CardGame.instance.get_current_adversary().get_creatures().isEmpty())    
+            System.out.println("no creatures on the field, " + CardGame.instance.get_current_adversary().get_name() + " can't defend");
         else{
-            dichiara_Def(current_adversary);
+            dichiara_Def(CardGame.instance.get_current_adversary(), difensori);
         }
-        giocaIstanaeaCombatPhase_Def(current_adversary, current_player_idx);
+        giocaIstanaeaCombatPhase_Def(current_player_idx);
         
         if(!attaccanti.isEmpty()){
             for(int i=attaccanti.size()-1; i>=0; i--){
-                int current_power = attaccanti.get(i).getCurrent_power();
+                int current_power = CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).get_power();
                 int initial_currentpower = current_power;
                 int danno_difensori = 0;
                 while(current_power > 0){
                     if(difensori.isEmpty() && initial_currentpower == current_power){
                         int real_dmg = 0;
-                        if(current_power > current_adversary.getCurrent_shield())
-                            real_dmg = current_power - current_adversary.getCurrent_shield();
-                        System.out.println(attaccanti.get(i).name() + " attaccando ha inflitto " + real_dmg + " danni al giocatore " + current_adversary.get_name());
-                        attaccanti.get(i).attack_player(current_adversary, current_power);
+                        if(current_power > CardGame.instance.get_current_adversary().getCurrent_shield())
+                            real_dmg = current_power - CardGame.instance.get_current_adversary().getCurrent_shield();
+                        System.out.println(CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).name() + " attaccando ha inflitto " + real_dmg + " danni al giocatore " + CardGame.instance.get_current_adversary().get_name());
+                        CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).attack_player(CardGame.instance.get_current_adversary(), current_power);
                         current_power = 0;
                     }
                     else{
-                        danno_difensori = difensori.get(difensori.size()-1).getCurrent_power();
-                        attaccanti.get(i).attack_creature(difensori.get(difensori.size()-1), current_power);
-                        current_power = current_power - (difensori.get(difensori.size()-1).getCurrent_toughness() + difensori.get(difensori.size()-1).getCurrent_shield());
+                        danno_difensori = danno_difensori + CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).get_power();
+                        int danno = current_power;
+                        current_power = current_power - (CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).getCurrent_toughness() + CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).getCurrent_shield());
+                        if(danno >= (CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).getCurrent_toughness() + CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).getCurrent_shield())){
+                            int pos = difensori.get(0);
+                            difensori.remove(0);
+                            for(int aggiusta=0; aggiusta<difensori.size(); aggiusta++){
+                                if(difensori.get(aggiusta) > pos)
+                                    difensori.set(aggiusta, difensori.get(aggiusta)-1);
+                            }
+                            if(difensori.isEmpty())
+                                current_power = 0;
+                            CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).attack_creature(CardGame.instance.get_current_adversary().get_creatures().get(pos), danno);
+                        }
+                        else
+                            CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).attack_creature(CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)), danno);
                     }
-                    if(current_power <= 0){
-                        System.out.println("i mostri difensori difendendo hanno inflitto " + danno_difensori + " danni al mostro " + attaccanti.get(i).name());
-                        attaccanti.get(i).inflict_damage(danno_difensori);
+                    if(current_power <= 0 && danno_difensori > 0){
+                        int real_def_dmg = 0;
+                        if(danno_difensori > CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_shield()){
+                            real_def_dmg = danno_difensori - CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_shield();
+                            if(real_def_dmg <= CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_toughness())
+                                System.out.println("i mostri difensori difendendo hanno inflitto " + real_def_dmg + " danni al mostro " + CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).name());
+                            else{
+                                real_def_dmg = CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_toughness();
+                                System.out.println("i mostri difensori difendendo hanno inflitto " + real_def_dmg + " danni al mostro " + CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).name());
+                            }
+                        }
+                        else
+                            System.out.println("i mostri difensori difendendo hanno inflitto " + real_def_dmg + " danni al mostro " + CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).name());
+                        if(danno_difensori >= (CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_toughness() + CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_shield())){
+                            int pos = attaccanti.get(i);
+                            for(int aggiusta_atk=0; aggiusta_atk<attaccanti.size(); aggiusta_atk++){
+                                if(attaccanti.get(aggiusta_atk) > pos)
+                                    attaccanti.set(aggiusta_atk, attaccanti.get(aggiusta_atk)-1);
+                            }
+                        }
+                        CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).inflict_damage(danno_difensori);
                     }
                 }
             }
         }
-        for(int i=0; i<attaccanti.size(); i++){
-            attaccanti.remove(i);
-        }
-        for(int i=0; i<difensori.size(); i++){
-            difensori.remove(i);
-        }
+        attaccanti.clear();
+        difensori.clear();
     }
 
     // DICHIARAZIONE ATTACCANTI
-    private boolean dichiara_Atk(Player current_player){
+    private boolean dichiara_Atk(Player current_player, ArrayList<Integer> attaccanti){
         Scanner reader = CardGame.instance.get_scanner();
+        
+        if(!CardGame.instance.get_current_player().get_creatures().isEmpty()){
+            boolean alltapped = false;
+            boolean pass = false;
             
-            if(!CardGame.instance.get_current_player().get_creatures().isEmpty()){
-                boolean alltapped = false;
-                boolean pass = false;
+            while(!pass && !alltapped){
+                System.out.println(current_player.get_name() + " select a monster for attack, 0 to pass");
                 
-                while(!pass && !alltapped){
-                    System.out.println(current_player.get_name() + " select a monster for attack, 0 to pass");
-                    
-                    int i=0;
-                    //print monster in the field
-                    for (Creature c:current_player.get_creatures()) {
-                        if(!c.isTapped())
-                            System.out.println(Integer.toString(i+1)+") " + c.name() +
-                                    " ["+ c.get_power() + "/" + c.get_toughness() + "]" );
-                        ++i;
-                    }
-                    
-                    //user choice monster for attack
-                    int idx= reader.nextInt()-1;
-                    if (idx<0 || idx>=current_player.get_creatures().size()) return false;
-                    
-                    if(CardGame.instance.get_current_player().get_creatures().get(idx).isTapped())
-                        System.out.println("il mostro " + current_player.get_creatures().get(idx).name() + " ha già dichiarato la sua azione di attacco");
+                int i=0;
+                //print monster in the field
+                for (Creature c:current_player.get_creatures()) {
+                    if(!c.isTapped())
+                        System.out.println(Integer.toString(i+1)+") " + c.name() +
+                                " ["+ c.get_power() + "/" + c.get_toughness() + "]" );
+                    ++i;
+                }
+                
+                //user choice monster for attack
+                int idx= reader.nextInt()-1;
+                if (idx<0 || idx>=current_player.get_creatures().size()) return false;
+                
+                if(CardGame.instance.get_current_player().get_creatures().get(idx).isTapped())
+                    System.out.println("il mostro " + current_player.get_creatures().get(idx).name() + " ha già dichiarato la sua azione di attacco");
+                else{
+                    if(CardGame.instance.get_current_player().get_creatures().get(idx).getCurrent_power() <= 0)
+                        System.out.println("il mostro " + current_player.get_creatures().get(idx).name() + " ha 0 o meno punti attacco, non può attaccare!");
                     else{
                         System.out.println("il mostro " + current_player.get_creatures().get(idx).name() + " ha dichiarato un'azione di attacco");
                         current_player.get_creatures().get(idx).tap();
-                        attaccanti.add(current_player.get_creatures().get(idx));
+                        attaccanti.add(0, idx);
                     }
-                    
-                    alltapped = true;
-                    for(int z = 0; z < CardGame.instance.get_current_player().get_creatures().size(); z++){
-                        if(!CardGame.instance.get_current_player().get_creatures().get(z).isTapped()){
-                            alltapped = false;
-                            if(!alltapped)
-                                break;
-                        }
-                    }
-                
                 }
-                return true;
+                
+                alltapped = true;
+                for(int z = 0; z < CardGame.instance.get_current_player().get_creatures().size(); z++){
+                    if(!CardGame.instance.get_current_player().get_creatures().get(z).isTapped()){
+                        alltapped = false;
+                        if(!alltapped)
+                            break;
+                    }
+                }
+                
             }
-            return false;
+            return true;
+        }
+        return false;
     }
     
     // DICHIARAZIONE DIFENSORI
-    private boolean dichiara_Def(Player current_adversary){
+    private boolean dichiara_Def(Player current_adversary, ArrayList<Integer> difensori){
         Scanner reader = CardGame.instance.get_scanner();
+        
+        if(!CardGame.instance.get_current_adversary().get_creatures().isEmpty()){
+            boolean alltapped = true;
+            boolean pass = false;
             
-            if(!CardGame.instance.get_current_adversary().get_creatures().isEmpty()){
-                boolean alltapped = false;
-                boolean pass = false;
-                
+            for(int x = 0; x < CardGame.instance.get_current_adversary().get_creatures().size(); x++){
+                if(!CardGame.instance.get_current_adversary().get_creatures().get(x).isTapped()){
+                    alltapped = false;
+                    if(!alltapped)
+                        break;
+                }
+            }
+            if(alltapped)
+                System.out.println(current_adversary.get_name() + " tutti i tuoi mostri sono tappati non puoi difenderti");
+            else{
                 while(!pass && !alltapped){
                     System.out.println(current_adversary.get_name() + " select a monster for defend, 0 to pass");
                     
@@ -233,7 +249,7 @@ public class DefaultCombatPhase implements Phase {
                     else{
                         System.out.println("il mostro " + current_adversary.get_creatures().get(idx).name() + " ha dichiarato un'azione di difesa");
                         current_adversary.get_creatures().get(idx).tap();
-                        attaccanti.add(current_adversary.get_creatures().get(idx));
+                        difensori.add(idx);
                     }
                     
                     alltapped = true;
@@ -244,10 +260,11 @@ public class DefaultCombatPhase implements Phase {
                                 break;
                         }
                     }
-                
+                    
                 }
-                return true;
             }
-            return false;
+            return true;
+        }
+        return false;
     }
 }
