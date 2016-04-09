@@ -11,16 +11,13 @@ Se viene scaricata tutta la cartella, è possibile aprire CardGame con NetBeans
 
 Mostri da fare:
 
-Benevolent Ancestor
-Bronze Sable
+Benevolent Ancestor (Manca solo reset shield alla end phase)
 
 \/ \/ \/
 
 Stregonerie da fare:
 
-Boiling Earth
 Savor the moment
-Volcanic Hammer
 
 \/ \/ \/
 
@@ -40,3 +37,6 @@ Volcanic hammer
 Aggressive urge
 Afflict
 Norwood Ranger
+Boiling Earth
+Volcanic Hammer
+Bronze Sable
