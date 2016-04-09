@@ -66,7 +66,7 @@ public class BenevolentAncestor implements Card {
     }
     
     
-    public class BenevolentAncestorCreature extends AbstractCreature implements TriggerAction {
+    private class BenevolentAncestorCreature extends AbstractCreature implements TriggerAction {
         ArrayList<Effect> all_effects= new ArrayList<>(); //Denota tutti gli effetti
         ArrayList<Effect> tap_effects= new ArrayList<>(); //Effetti che possono essere usati in quel turno
         
