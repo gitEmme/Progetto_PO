@@ -21,6 +21,11 @@ public class FalsePeace implements Card{
         SkipPhase skipCombat = new SkipPhase(Phases.COMBAT);
         owner.set_phase(Phases.COMBAT, skipCombat);
         }
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 
     public Effect get_effect(Player owner) { 

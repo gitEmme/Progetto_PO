@@ -56,6 +56,11 @@ public class Fatigue implements Card {
             CardGame.instance.get_current_adversary().set_phase(Phases.DRAW,new SkipPhase(Phases.DRAW));
             
         }  
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
     
     

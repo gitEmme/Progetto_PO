@@ -16,6 +16,11 @@ public class Reflexologist implements Card{
         public ReflexologistEffect(Player p, Card c) { super(p,c); }
         
         protected Creature create_creature() { return new ReflexologistCreature(owner); }
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
     public Effect get_effect(Player p) { return new ReflexologistEffect(p,this); }
     
@@ -34,6 +39,16 @@ public class Reflexologist implements Card{
                                     public void resolve() {}
                                     public String toString() 
                                         { return "tap: Reflexology does nothing"; }
+
+                @Override
+                public void setTarget() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+
+                @Override
+                public Player getTarget() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
                                 }
                 ); 
         }

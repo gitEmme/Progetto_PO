@@ -29,6 +29,11 @@ public class SavorTheMoment implements Card{
             own.set_phase(Phases.NULL, skipNull);
             own.set_phase(Phases.UNTAP, skipUntap);
         }
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 
     @Override

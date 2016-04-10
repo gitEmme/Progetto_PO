@@ -33,6 +33,11 @@ public class NorwoodRanger implements Card {
         public NorwoodRangerEffect(Player p,Card c) {super(p,c);}/* il costruttore eredita i parametri di AbstractCreatureCardEffect*/
         
         protected Creature create_creature() { return new NorwoodRangerCreature(owner);}/*il seguente metodo restituisce l'effetto di invocare (posizionare in campo) la carta*/
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
     
     private class NorwoodRangerCreature extends AbstractCreature {
@@ -108,6 +113,16 @@ public class NorwoodRanger implements Card {
                  System.out.println("Does nothing!");
                 }
                 public String toString() {return "Norwood Ranger non ha effetti";}/* descrizione degli effetti*/
+
+                @Override
+                public void setTarget() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+
+                @Override
+                public Player getTarget() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
             }
             );
         }

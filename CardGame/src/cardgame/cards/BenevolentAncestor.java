@@ -62,6 +62,11 @@ public class BenevolentAncestor implements Card {
         protected Creature create_creature() { 
             return new BenevolentAncestorCreature(owner); 
         }
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
        
     }
     
@@ -78,7 +83,7 @@ public class BenevolentAncestor implements Card {
                                         return tap(); 
                                     }
                                     public void resolve() {
-                                        int monster;
+                                        int monster = 2;
                                         int choose;
                                         do {
                                             System.out.println("Do you want increase the shield at a monster o at Player?");
@@ -100,15 +105,37 @@ public class BenevolentAncestor implements Card {
                                                 CardGame.instance.get_current_player().get_creatures().get(monster).setCurrent_shield(CardGame.instance.get_current_player().get_creatures().get(monster).getCurrent_shield()+1);
                                                 System.out.println("The creature " + CardGame.instance.get_current_player().get_creatures().get(monster).name()+ " has as shield value: " + CardGame.instance.get_current_player().get_creatures().get(monster).getCurrent_shield());
                                             } catch (IndexOutOfBoundsException e) {
-                                                System.out.println("There aren't monster in the field");
+                                                System.out.println("There aren't monsters in the field");
                                             }
                                         }
-                                        //CardGame.instance.get_triggers().register(Phases.END_FILTER, this);
+                                        // resetting shield at end phase
+                                        try {
+                                            if (choose == 0) {
+                                                System.out.println("Resetting player shield..");
+                                                CardGame.instance.get_current_player().get_shield();
+                                            }                  
+                                            if (choose == 1) {
+                                                System.out.println("Resetting monster shield..");
+                                                CardGame.instance.get_current_player().get_creatures().get(monster).get_shield();
+                                            }
+                                        } catch (IndexOutOfBoundsException e) {
+                                            System.out.println("There aren't monsters in the field");
+                                        }
                                     }
                                     
                                     public String toString() { 
                                         return "tap: Benevolent Ancestor fa qualcosa, ma non so cosa! Con questo messaggio sto tappando!"; 
                                     }
+
+                @Override
+                public void setTarget() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+
+                @Override
+                public Player getTarget() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
                                 }
                 ); 
         }

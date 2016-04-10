@@ -62,5 +62,10 @@ public class VolcanicHammer implements Card {
     }catch(IndexOutOfBoundsException e){System.out.println("Non ci sono carte in campo!");};    
             }
         }        
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 }

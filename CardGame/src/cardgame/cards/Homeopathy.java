@@ -11,6 +11,11 @@ public class Homeopathy implements Card{
     private class HomeopathyEffect extends AbstractCardEffect {
         public HomeopathyEffect(Player p, Card c) { super(p,c); }
         public void resolve() {}
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 
     public Effect get_effect(Player owner) { 

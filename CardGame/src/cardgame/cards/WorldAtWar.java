@@ -66,6 +66,11 @@ public class WorldAtWar implements Card {
            CardGame.instance.get_current_player().next_phase();
            CardGame.instance.get_current_player().set_phase(Phases.END, new DefaultEndPhase());
         }   
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     
     }
     

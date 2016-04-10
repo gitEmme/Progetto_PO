@@ -32,6 +32,11 @@ public class Cancel implements Card{
             }
             
         }
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
         
     }
     @Override

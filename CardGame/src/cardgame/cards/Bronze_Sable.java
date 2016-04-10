@@ -25,6 +25,11 @@ public class Bronze_Sable implements Card{
         public Bronze_SableEffect(Player p, Card c) { super(p,c); }
         
         protected Creature create_creature() { return new Bronze_SableCreature(owner); }
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
     public Effect get_effect(Player p) { return new Bronze_SableEffect(p,this); }
     
@@ -48,6 +53,16 @@ public class Bronze_Sable implements Card{
                                                 + "would have been overcome if not f"
                                                 + "or the aid of the temple guardians "
                                                 + "whom Karametra awakened."; }
+
+                @Override
+                public void setTarget() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+
+                @Override
+                public Player getTarget() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
                                 }
                 ); 
         }

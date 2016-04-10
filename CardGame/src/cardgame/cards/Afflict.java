@@ -59,5 +59,10 @@ public class Afflict implements Card{
                 owner.get_creatures().add(old);
             }
         }
+
+        @Override
+        public void setTarget() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 }   
