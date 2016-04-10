@@ -2,8 +2,8 @@ package cardgame;
 
 
 // Carte:
-//  Mostri:
 
+//  Mostri:
 import cardgame.cards.Reflexologist;
 import cardgame.cards.BenevolentAncestor;
 import cardgame.cards.Bronze_Sable;
@@ -50,7 +50,7 @@ public class CardGame {
         ArrayList<Card> deck = new ArrayList<Card>();
         for (int i=0; i!=5; ++i) deck.add(new Homeopathy());
         for (int i=0; i!=5; ++i) deck.add(new Reflexologist());
-        //for (int i=0; i!=5; ++i) deck.add(new BenevolentAncestor());
+        for (int i=0; i!=5; ++i) deck.add(new BenevolentAncestor());
         for (int i=0; i!=5; ++i) deck.add(new Fatigue());
         for (int i=0; i!=5; ++i) deck.add(new Darkness());
         for (int i=0; i!=5; ++i) deck.add(new WorldAtWar());
