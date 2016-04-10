@@ -10,6 +10,7 @@ import cardgame.Card;
 import cardgame.Effect;
 import cardgame.Player;
 import cardgame.CardGame;
+import java.util.Scanner;
 
 /**
  *
@@ -24,21 +25,36 @@ public class Cancel implements Card{
         }
         
         @Override
-        public void resolve() {
+        public void resolve(){
             if(CardGame.instance.get_stack().isEmpty()){
                 System.out.println("There no effects to cancel");
-            }else{
-                CardGame.instance.get_stack().removeLast();
+            }
+            else{
+                Scanner reader = CardGame.instance.get_scanner();
+                System.out.println("effect on the field");
+                int i=0;
+                for( Effect e:CardGame.instance.get_stack()) {
+                    System.out.println(Integer.toString(i+1)+") " + e );
+                    ++i;
+                }
+                int idx =0;
+                do{
+                    System.out.println(owner.get_name() + " select effect to counter");
+                    idx= reader.nextInt()-1;
+                }while(idx<0 || idx>=i);
+                
+                int y=0;
+                for( Effect e:CardGame.instance.get_stack()){
+                    if(y == idx)
+                        CardGame.instance.get_stack().remove(e);
+                }
+                
             }
             
         }
-
-        @Override
-        public void setTarget() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
         
     }
+    
     @Override
     public Effect get_effect(Player owner) {
         return new CancelEffect(owner, this);
