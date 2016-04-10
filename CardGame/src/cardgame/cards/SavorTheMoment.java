@@ -46,7 +46,7 @@ public class SavorTheMoment implements Card{
     @Override
     public String type() { return "Sorcery"; }
     @Override
-    public String rule_text() { return name() + " Take an eztra turn after this one. Skip the untap step of that turn. "; }
+    public String rule_text() { return name() + " Take an extra turn after this one. Skip the untap step of that turn. "; }
     @Override
     public String toString() { return name() + "[" + rule_text() +"]";}
     @Override
