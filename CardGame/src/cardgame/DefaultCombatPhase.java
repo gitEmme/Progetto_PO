@@ -8,8 +8,6 @@ import java.util.Scanner;
 
 
 public class DefaultCombatPhase implements Phase {
-    private final ArrayList<Integer> attaccanti = new ArrayList<>();
-    private final ArrayList<Integer> difensori = new ArrayList<>();
     
     public void execute() {
         Player current_player = CardGame.instance.get_current_player();
@@ -88,75 +86,75 @@ public class DefaultCombatPhase implements Phase {
             System.out.println("no creatures on the field, " + CardGame.instance.get_current_player().get_name() + " can't attack");
         }
         else{
-            dichiara_Atk(CardGame.instance.get_current_player(), attaccanti);
+            dichiara_Atk(CardGame.instance.get_current_player(), CardGame.instance.get_current_player().getAttaccantiCombat());
         }
         giocaIstanaeaCombatPhase_Atk(response_player_idx);
         if(CardGame.instance.get_current_adversary().get_creatures().isEmpty())    
             System.out.println("no creatures on the field, " + CardGame.instance.get_current_adversary().get_name() + " can't defend");
         else{
-            dichiara_Def(CardGame.instance.get_current_adversary(), difensori);
+            dichiara_Def(CardGame.instance.get_current_adversary(), CardGame.instance.get_current_adversary().getDifensoriCombat());
         }
         giocaIstanaeaCombatPhase_Def(current_player_idx);
         
-        if(!attaccanti.isEmpty()){
-            for(int i=attaccanti.size()-1; i>=0; i--){
-                int current_power = CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).get_power();
+        if(!CardGame.instance.get_current_player().getAttaccantiCombat().isEmpty()){
+            for(int i=CardGame.instance.get_current_player().getAttaccantiCombat().size()-1; i>=0; i--){
+                int current_power = CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).get_power();
                 int initial_currentpower = current_power;
                 int danno_difensori = 0;
                 while(current_power > 0){
-                    if(difensori.isEmpty() && initial_currentpower == current_power){
+                    if(CardGame.instance.get_current_adversary().getDifensoriCombat().isEmpty() && initial_currentpower == current_power){
                         int real_dmg = 0;
                         if(current_power > CardGame.instance.get_current_adversary().getCurrent_shield())
                             real_dmg = current_power - CardGame.instance.get_current_adversary().getCurrent_shield();
-                        System.out.println(CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).name() + " attaccando ha inflitto " + real_dmg + " danni al giocatore " + CardGame.instance.get_current_adversary().get_name());
-                        CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).attack_player(CardGame.instance.get_current_adversary(), current_power);
+                        System.out.println(CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).name() + " attaccando ha inflitto " + real_dmg + " danni al giocatore " + CardGame.instance.get_current_adversary().get_name());
+                        CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).attack_player(CardGame.instance.get_current_adversary(), current_power);
                         current_power = 0;
                     }
                     else{
-                        danno_difensori = danno_difensori + CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).get_power();
+                        danno_difensori = danno_difensori + CardGame.instance.get_current_adversary().get_creatures().get(CardGame.instance.get_current_adversary().getDifensoriCombat().get(0)).get_power();
                         int danno = current_power;
-                        current_power = current_power - (CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).getCurrent_toughness() + CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).getCurrent_shield());
-                        if(danno >= (CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).getCurrent_toughness() + CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)).getCurrent_shield())){
-                            int pos = difensori.get(0);
-                            difensori.remove(0);
-                            for(int aggiusta=0; aggiusta<difensori.size(); aggiusta++){
-                                if(difensori.get(aggiusta) > pos)
-                                    difensori.set(aggiusta, difensori.get(aggiusta)-1);
+                        current_power = current_power - (CardGame.instance.get_current_adversary().get_creatures().get(CardGame.instance.get_current_adversary().getDifensoriCombat().get(0)).getCurrent_toughness() + CardGame.instance.get_current_adversary().get_creatures().get(CardGame.instance.get_current_adversary().getDifensoriCombat().get(0)).getCurrent_shield());
+                        if(danno >= (CardGame.instance.get_current_adversary().get_creatures().get(CardGame.instance.get_current_adversary().getDifensoriCombat().get(0)).getCurrent_toughness() + CardGame.instance.get_current_adversary().get_creatures().get(CardGame.instance.get_current_adversary().getDifensoriCombat().get(0)).getCurrent_shield())){
+                            int pos = CardGame.instance.get_current_adversary().getDifensoriCombat().get(0);
+                            CardGame.instance.get_current_adversary().getDifensoriCombat().remove(0);
+                            for(int aggiusta=0; aggiusta<CardGame.instance.get_current_adversary().getDifensoriCombat().size(); aggiusta++){
+                                if(CardGame.instance.get_current_adversary().getDifensoriCombat().get(aggiusta) > pos)
+                                    CardGame.instance.get_current_adversary().getDifensoriCombat().set(aggiusta, CardGame.instance.get_current_adversary().getDifensoriCombat().get(aggiusta)-1);
                             }
-                            if(difensori.isEmpty())
+                            if(CardGame.instance.get_current_adversary().getDifensoriCombat().isEmpty())
                                 current_power = 0;
-                            CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).attack_creature(CardGame.instance.get_current_adversary().get_creatures().get(pos), danno);
+                            CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).attack_creature(CardGame.instance.get_current_adversary().get_creatures().get(pos), danno);
                         }
                         else
-                            CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).attack_creature(CardGame.instance.get_current_adversary().get_creatures().get(difensori.get(0)), danno);
+                            CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).attack_creature(CardGame.instance.get_current_adversary().get_creatures().get(CardGame.instance.get_current_adversary().getDifensoriCombat().get(0)), danno);
                     }
                     if(current_power <= 0 && danno_difensori > 0){
                         int real_def_dmg = 0;
-                        if(danno_difensori > CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_shield()){
-                            real_def_dmg = danno_difensori - CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_shield();
-                            if(real_def_dmg <= CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_toughness())
-                                System.out.println("i mostri difensori difendendo hanno inflitto " + real_def_dmg + " danni al mostro " + CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).name());
+                        if(danno_difensori > CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).getCurrent_shield()){
+                            real_def_dmg = danno_difensori - CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).getCurrent_shield();
+                            if(real_def_dmg <= CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).getCurrent_toughness())
+                                System.out.println("i mostri difensori difendendo hanno inflitto " + real_def_dmg + " danni al mostro " + CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).name());
                             else{
-                                real_def_dmg = CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_toughness();
-                                System.out.println("i mostri difensori difendendo hanno inflitto " + real_def_dmg + " danni al mostro " + CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).name());
+                                real_def_dmg = CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).getCurrent_toughness();
+                                System.out.println("i mostri difensori difendendo hanno inflitto " + real_def_dmg + " danni al mostro " + CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).name());
                             }
                         }
                         else
-                            System.out.println("i mostri difensori difendendo hanno inflitto " + real_def_dmg + " danni al mostro " + CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).name());
-                        if(danno_difensori >= (CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_toughness() + CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).getCurrent_shield())){
-                            int pos = attaccanti.get(i);
-                            for(int aggiusta_atk=0; aggiusta_atk<attaccanti.size(); aggiusta_atk++){
-                                if(attaccanti.get(aggiusta_atk) > pos)
-                                    attaccanti.set(aggiusta_atk, attaccanti.get(aggiusta_atk)-1);
+                            System.out.println("i mostri difensori difendendo hanno inflitto " + real_def_dmg + " danni al mostro " + CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).name());
+                        if(danno_difensori >= (CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).getCurrent_toughness() + CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).getCurrent_shield())){
+                            int pos = CardGame.instance.get_current_player().getAttaccantiCombat().get(i);
+                            for(int aggiusta_atk=0; aggiusta_atk<CardGame.instance.get_current_player().getAttaccantiCombat().size(); aggiusta_atk++){
+                                if(CardGame.instance.get_current_player().getAttaccantiCombat().get(aggiusta_atk) > pos)
+                                    CardGame.instance.get_current_player().getAttaccantiCombat().set(aggiusta_atk, CardGame.instance.get_current_player().getAttaccantiCombat().get(aggiusta_atk)-1);
                             }
                         }
-                        CardGame.instance.get_current_player().get_creatures().get(attaccanti.get(i)).inflict_damage(danno_difensori);
+                        CardGame.instance.get_current_player().get_creatures().get(CardGame.instance.get_current_player().getAttaccantiCombat().get(i)).inflict_damage(danno_difensori);
                     }
                 }
             }
         }
-        attaccanti.clear();
-        difensori.clear();
+        CardGame.instance.get_current_player().getAttaccantiCombat().clear();
+        CardGame.instance.get_current_adversary().getDifensoriCombat().clear();
     }
 
     // DICHIARAZIONE ATTACCANTI
@@ -268,3 +266,4 @@ public class DefaultCombatPhase implements Phase {
         return false;
     }
 }
+
