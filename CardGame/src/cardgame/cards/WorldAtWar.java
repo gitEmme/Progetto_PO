@@ -57,11 +57,11 @@ public class WorldAtWar implements Card {
         }
         
         public void resolve() {
-           System.out.println("Starting CUSTOM COMBAT PHASE");
-           CardGame.instance.get_current_player().remove_phase(Phases.END, new SkipPhase(Phases.END));
+           System.out.println("Starting CUSTOM ADDITIONAL PHASEs");
+           CardGame.instance.get_current_player().set_phase(Phases.END, new SkipPhase(Phases.END));
+           CardGame.instance.get_current_player().set_phase(Phases.DRAW, new SkipPhase(Phases.DRAW));
            CardGame.instance.get_current_player().set_phase(Phases.COMBAT, new DefaultCombatPhase());
            CardGame.instance.get_current_player().next_phase().execute();
-           System.out.println("Starting CUSTOM MAIN PHASE");
            CardGame.instance.get_current_player().set_phase(Phases.MAIN, new DefaultMainPhase());
            CardGame.instance.get_current_player().next_phase();
            CardGame.instance.get_current_player().set_phase(Phases.END, new DefaultEndPhase());
