@@ -11,7 +11,7 @@ Se viene scaricata tutta la cartella, è possibile aprire CardGame con NetBeans
 
 Mostri da fare:
 
-Benevolent Ancestor (Manca solo reset shield alla end phase)
+
 
 \/ \/ \/
 
@@ -23,13 +23,14 @@ Stregonerie da fare:
 
 Istantanee da fare:
 
-Darkness
-Deflection
+
 
 \/ \/ \/
 
 Carte funzionanti:
 
+Benevolent Ancestor* (Reset shield secondo me da rivedere)
+Deflection* (Manca un controllo)
 Fatigue
 World At War
 Volcanic hammer
