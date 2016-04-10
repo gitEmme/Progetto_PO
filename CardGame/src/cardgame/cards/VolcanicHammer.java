@@ -43,7 +43,17 @@ public class VolcanicHammer implements Card {
             }while(target!=0 && target !=1);   
              
             if(target==0) {
-                CardGame.instance.get_current_adversary().inflict_damage(3);/*get_current_adversary e get_player public*/
+                int danno = 3 - CardGame.instance.get_current_adversary().getCurrent_shield();
+                if (danno < 0) {
+                    CardGame.instance.get_current_adversary().inflict_damage(0);
+                    System.out.println("Your creature has: " +CardGame.instance.get_current_adversary().get_life());
+                }
+                else {
+                    CardGame.instance.get_current_adversary().inflict_damage(danno);
+                    System.out.println("Your creature has: " +CardGame.instance.get_current_adversary().get_life());
+                    
+                }
+
             }
             else {
                 creatures=CardGame.instance.get_current_adversary().get_creatures().size();
@@ -58,6 +68,16 @@ public class VolcanicHammer implements Card {
             System.out.println("Select one creature for which apply the effect: 0 - " + (creatures -1));
             creatureSelected=s.nextInt();
             }while(creatureSelected<0);
+        int danno = 0;
+        danno = 3 - CardGame.instance.get_current_adversary().get_creatures().get(creatureSelected).getCurrent_shield();
+        if (danno < 0) {
+            CardGame.instance.get_current_adversary().get_creatures().get(creatureSelected).inflict_damage(0);
+            System.out.println("Your creature has: " +CardGame.instance.get_current_adversary().get_creatures().get(creatureSelected).get_toughness());
+        }
+        else {
+            CardGame.instance.get_current_adversary().get_creatures().get(creatureSelected).inflict_damage(danno);
+            System.out.println("Your creature has: " +CardGame.instance.get_current_adversary().get_creatures().get(creatureSelected).get_toughness());
+        }
     CardGame.instance.get_current_adversary().get_creatures().get(creatureSelected).inflict_damage(3);
     }catch(IndexOutOfBoundsException e){System.out.println("Non ci sono carte in campo!");};    
             }
