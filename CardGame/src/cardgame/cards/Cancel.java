@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Giacomo
+ * @author Alberto
  */
 public class Cancel implements Card{
 
@@ -47,6 +47,7 @@ public class Cancel implements Card{
                 for( Effect e:CardGame.instance.get_stack()){
                     if(y == idx)
                         CardGame.instance.get_stack().remove(e);
+                    y++;
                 }
                 
             }
