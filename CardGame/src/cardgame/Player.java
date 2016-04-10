@@ -45,7 +45,32 @@ public class Player {
         return library; 
     }
     
+    private final ArrayList<Integer> attaccanti = new ArrayList<>();
+    private final ArrayList<Integer> difensori = new ArrayList<>();
     
+    public ArrayList<Integer> getAttaccantiCombat() {
+        return attaccanti;
+    }
+
+    public ArrayList<Integer> getDifensoriCombat() {
+        return difensori;
+    }
+
+    public int getAttaccanti(int pos) {
+        return attaccanti.get(pos);
+    }
+    
+    public void setAttaccanti(int pos, int mod) {
+        attaccanti.set(pos, attaccanti.get(pos)-mod);
+    }
+
+    public int getDifensori(int pos) {
+        return difensori.get(pos);
+    }
+    
+    public void setDifensori(int pos, int mod) {
+        difensori.set(pos, difensori.get(pos)-mod);
+    }
     
     private int life=10; // Vita
     public int get_life() {
