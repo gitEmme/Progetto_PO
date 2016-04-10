@@ -17,7 +17,7 @@ Mostri da fare:
 
 Stregonerie da fare:
 
-
+Deflection
 
 \/ \/ \/
 
@@ -30,7 +30,6 @@ Istantanee da fare:
 Carte funzionanti:
 
 Benevolent Ancestor* (Reset shield secondo me da rivedere)
-Deflection* (Manca un controllo)
 Fatigue
 World At War
 Volcanic hammer
