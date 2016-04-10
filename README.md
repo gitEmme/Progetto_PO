@@ -17,13 +17,12 @@ Benevolent Ancestor (Manca solo reset shield alla end phase)
 
 Stregonerie da fare:
 
-Savor the moment
+
 
 \/ \/ \/
 
 Istantanee da fare:
 
-Cancel
 Darkness
 Deflection
 
@@ -40,3 +39,5 @@ Norwood Ranger
 Boiling Earth
 Volcanic Hammer
 Bronze Sable
+Savor the moment
+Cancel
