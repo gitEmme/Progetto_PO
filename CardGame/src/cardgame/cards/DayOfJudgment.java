@@ -5,28 +5,25 @@ import cardgame.AbstractCardEffect;
 import cardgame.Card;
 import cardgame.Effect;
 import cardgame.Player;
+import cardgame.CardGame;
+import cardgame.Creature;
+import cardgame.Phases;
+import cardgame.TriggerAction;
 
 
-
+//autor Alberto
 public class DayOfJudgment implements Card{
     
     private class DayOfJudgmentEffect extends AbstractCardEffect {
-        private Player owner;
+        
         public DayOfJudgmentEffect(Player p, Card c) { 
             super(p,c); 
-            owner = p;
         }
         public void resolve() {
-            int n_creature = owner.get_creatures().size();
-            while(n_creature>0){
-                owner.destroy(owner.get_creatures().get(n_creature-1));
-                n_creature--;
-            }
-        }
-
-        @Override
-        public void setTarget() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            CardGame.instance.get_current_player().get_creatures().clear();
+            CardGame.instance.get_current_player().getAttaccantiCombat().clear();
+            CardGame.instance.get_current_adversary().get_creatures().clear();
+            CardGame.instance.get_current_adversary().getDifensoriCombat().clear();
         }
     }
 
