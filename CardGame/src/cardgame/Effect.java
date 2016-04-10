@@ -7,5 +7,8 @@ public interface Effect {
     
     // resolves the effect
     void resolve();
+    
+    void setTarget();
+    Player getTarget();
 
 }
