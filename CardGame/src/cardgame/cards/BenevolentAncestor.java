@@ -108,19 +108,6 @@ public class BenevolentAncestor implements Card {
                                                 System.out.println("There aren't monsters in the field");
                                             }
                                         }
-                                        // resetting shield at end phase
-                                        try {
-                                            if (choose == 0) {
-                                                System.out.println("Resetting player shield..");
-                                                CardGame.instance.get_current_player().get_shield();
-                                            }                  
-                                            if (choose == 1) {
-                                                System.out.println("Resetting monster shield..");
-                                                CardGame.instance.get_current_player().get_creatures().get(monster).get_shield();
-                                            }
-                                        } catch (IndexOutOfBoundsException e) {
-                                            System.out.println("There aren't monsters in the field");
-                                        }
                                     }
                                     
                                     public String toString() { 
