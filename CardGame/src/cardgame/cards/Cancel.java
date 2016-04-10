@@ -13,7 +13,7 @@ import cardgame.CardGame;
 
 /**
  *
- * @author Luca
+ * @author Giacomo
  */
 public class Cancel implements Card{
 
