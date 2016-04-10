@@ -13,6 +13,14 @@ public class CardStack implements Iterable<Effect> {
         stack.push(e); 
     }
     
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
+    
+    public void removeLast() {
+        stack.remove(stack.peek());
+    }
+    
     public void remove(Effect e) { stack.remove(e); }
     
     public void resolve() {
